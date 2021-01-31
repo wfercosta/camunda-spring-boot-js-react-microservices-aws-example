@@ -1,6 +1,18 @@
 version: '3.3'
 
 services:
+   rabbitmq:
+     image: rabbitmq:3-management
+     hostname: rabbitmq
+     environment:
+       RABBITMQ_ERLANG_COOKIE: SWQOKODSQALRPCLNMEQG
+       RABBITMQ_DEFAULT_USER: rabbitmq
+       RABBITMQ_DEFAULT_PASS: rabbitmq
+       RABBITMQ_DEFAULT_VHOST: "/"
+     ports:
+       - 15672:15672
+       - 5672:5672
+
    db-camunda:
      image: mysql:5.7
      volumes:
@@ -13,6 +25,7 @@ services:
        MYSQL_DATABASE: camunda
        MYSQL_USER: camunda
        MYSQL_PASSWORD: camunda
+
 
 volumes:
     db_data: {}

@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+   db-camunda:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     ports:
+       - 3306:3306
+     environment:
+       MYSQL_ROOT_PASSWORD: camunda
+       MYSQL_DATABASE: camunda
+       MYSQL_USER: camunda
+       MYSQL_PASSWORD: camunda
+
+volumes:
+    db_data: {}

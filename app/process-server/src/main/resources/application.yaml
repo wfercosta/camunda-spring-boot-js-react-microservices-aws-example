@@ -1,0 +1,12 @@
+
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/camunda?autoReconnect=true&sendFractionalSeconds=false
+  username: camunda
+  password: camunda
+
+
+camunda.bpm:
+  database.type: mysql
+  admin-user:
+    id: demo
+    password: demo

@@ -75,7 +75,7 @@ public class ExternalTaskManager {
 						.build();
 
 				this.listeners.forEach( handler -> {
-					com.bank.bpm.partners.workers.onboarding.component.ExternalTaskComponent annotation = handler.getClass().getAnnotation(com.bank.bpm.partners.workers.onboarding.component.ExternalTaskComponent.class);
+					ExternalTaskController annotation = handler.getClass().getAnnotation(ExternalTaskController.class);
 
 					final TopicSubscription subscription = client.subscribe(annotation.topic())
 							.handler(com.bank.bpm.partners.workers.onboarding.component.ExternalTaskHandlerDecorator.from(handler, settings)).open();

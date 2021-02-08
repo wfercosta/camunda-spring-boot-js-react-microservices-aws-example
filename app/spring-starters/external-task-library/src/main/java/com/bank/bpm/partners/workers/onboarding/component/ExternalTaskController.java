@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 @Component
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ExternalTaskComponent {
+public @interface ExternalTaskController {
 	String topic();
 }

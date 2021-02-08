@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 
 @Configuration
-public class ApplicationConfiguration {
+public class ExternalTaskConfiguration {
 
 	@Bean
 	public ExternalTaskManager externalTaskManager(final ExternalTasksProperties properties, final ApplicationContext context) {
@@ -19,7 +19,7 @@ public class ApplicationConfiguration {
 		Map<String, ExternalTaskHandler> beans = context.getBeansOfType(ExternalTaskHandler.class);
 
 		return ExternalTaskManager.Builder
-				.fromExternalTaskConfiguration(properties)
+				.fromExternalTaskSettings(properties)
 				.withListeners(beans.values().stream().collect(Collectors.toList()))
 				.build();
 

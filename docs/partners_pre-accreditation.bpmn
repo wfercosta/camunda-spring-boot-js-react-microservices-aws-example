@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04jzapd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="partner_accreditation" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Accreditation received">
+      <bpmn:outgoing>Flow_1r4ayni</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1r4ayni" sourceRef="StartEvent_1" targetRef="partner_registration_draft" />
+    <bpmn:endEvent id="Event_0dxch5x">
+      <bpmn:incoming>Flow_092fvdg</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_092fvdg" sourceRef="partner_registration_draft" targetRef="Event_0dxch5x" />
+    <bpmn:serviceTask id="partner_registration_draft" name="Save registration data draft" camunda:type="external" camunda:topic="partner_registration_draft">
+      <bpmn:incoming>Flow_1r4ayni</bpmn:incoming>
+      <bpmn:outgoing>Flow_092fvdg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0fyiqr4" attachedToRef="partner_registration_draft">
+      <bpmn:outgoing>Flow_09jaszr</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1datxxy" camunda:errorCodeVariable="partner_duplication" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_09jaszr" sourceRef="Event_0fyiqr4" targetRef="Activity_0ba8jag" />
+    <bpmn:userTask id="Activity_0ba8jag" name="Interação Humana">
+      <bpmn:incoming>Flow_09jaszr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t50zn8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0m7gqv8">
+      <bpmn:incoming>Flow_0t50zn8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0t50zn8" sourceRef="Activity_0ba8jag" targetRef="Event_0m7gqv8" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="partner_accreditation">
+      <bpmndi:BPMNEdge id="Flow_1r4ayni_di" bpmnElement="Flow_1r4ayni">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="360" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_092fvdg_di" bpmnElement="Flow_092fvdg">
+        <di:waypoint x="460" y="117" />
+        <di:waypoint x="593" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09jaszr_di" bpmnElement="Flow_09jaszr">
+        <di:waypoint x="390" y="175" />
+        <di:waypoint x="390" y="240" />
+        <di:waypoint x="460" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t50zn8_di" bpmnElement="Flow_0t50zn8">
+        <di:waypoint x="560" y="240" />
+        <di:waypoint x="612" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="166" y="142" width="64" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dxch5x_di" bpmnElement="Event_0dxch5x">
+        <dc:Bounds x="592" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fhk0ry_di" bpmnElement="partner_registration_draft">
+        <dc:Bounds x="360" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n6z6la_di" bpmnElement="Activity_0ba8jag">
+        <dc:Bounds x="460" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0m7gqv8_di" bpmnElement="Event_0m7gqv8">
+        <dc:Bounds x="612" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vt2eay_di" bpmnElement="Event_0fyiqr4">
+        <dc:Bounds x="372" y="139" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

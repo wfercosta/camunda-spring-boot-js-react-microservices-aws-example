@@ -20,17 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e94925be-e302-4abe-b2cf-6a14194c670c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/camunda-spring-boot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Affiliate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Brand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditationConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/ProcessInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-fraud/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
@@ -53,12 +42,8 @@
       <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/resources/application.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-pld/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/process-server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-registration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../bpm/fraud_analysis.bpmn" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../bpm/pld_analysis.bpmn" beforeDir="false" />

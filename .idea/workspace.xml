@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f4f1b465-bfb5-476b-b0f1-c156b14826b6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-fraud/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ms-pld/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bpm/fraud_analysis.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bpm/pld_analysis.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bpm/pre-register.bpmn" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1oA4rPRg77Izti4HZFSqXa3a8p1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4f1b465-bfb5-476b-b0f1-c156b14826b6" name="Default Changelist" comment="" />
+      <created>1612716258624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612716258624</updated>
+    </task>
+    <servers />
+  </component>
+</project>

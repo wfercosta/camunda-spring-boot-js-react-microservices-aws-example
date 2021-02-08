@@ -1,7 +1,0 @@
-com/bank/bpm/partners/workers/onboarding/component/ExternalTaskSettings.class
-com/bank/bpm/partners/workers/onboarding/component/DefaultExternalTaskSettings.class
-com/bank/bpm/partners/workers/onboarding/component/ExternalTaskManager$Builder.class
-com/bank/bpm/partners/workers/onboarding/component/ExternalTaskHandlerDecorator.class
-com/bank/bpm/partners/workers/onboarding/component/BusinessProcessModelException.class
-com/bank/bpm/partners/workers/onboarding/component/ExternalTaskManager.class
-com/bank/bpm/partners/workers/onboarding/component/ExternalTaskController.class

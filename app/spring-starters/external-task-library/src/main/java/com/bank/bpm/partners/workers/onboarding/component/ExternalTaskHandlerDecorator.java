@@ -28,7 +28,7 @@ public class ExternalTaskHandlerDecorator implements ExternalTaskHandler {
 		try {
 			handler.execute(externalTask, externalTaskService);
 		} catch (BusinessProcessModelException e) {
-			externalTaskService.handleBpmnError(externalTask, e.getErrorCode(), e.getMessage());
+			externalTaskService.handleBpmnError(externalTask, e.getErrorCode(), e.getMessage(), e.getVariables());
 		} catch (Exception e) {
 			externalTaskService.handleFailure(externalTask,
 					GENERIC_FAILURE,

@@ -1,0 +1,35 @@
+{
+  "groups": [
+    {
+      "name": "itau.components.camunda-external-task.connection",
+      "type": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties",
+      "sourceType": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "itau.components.camunda-external-task.connection.async-response-time",
+      "type": "java.time.Duration",
+      "sourceType": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties",
+      "defaultValue": "1s"
+    },
+    {
+      "name": "itau.components.camunda-external-task.connection.base-url",
+      "type": "java.net.URL",
+      "sourceType": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties"
+    },
+    {
+      "name": "itau.components.camunda-external-task.connection.lock-duration",
+      "type": "java.time.Duration",
+      "sourceType": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties",
+      "defaultValue": "20s"
+    },
+    {
+      "name": "itau.components.camunda-external-task.connection.max-retries",
+      "type": "java.lang.Integer",
+      "sourceType": "com.bank.bpm.partners.onboarding.starters.ExternalTasksProperties",
+      "defaultValue": 1
+    }
+  ],
+  "hints": []
+}

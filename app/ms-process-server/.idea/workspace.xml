@@ -20,34 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e94925be-e302-4abe-b2cf-6a14194c670c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-pld/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-registration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../bpm/fraud_analysis.bpmn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../bpm/pld_analysis.bpmn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../bpm/pre-register.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

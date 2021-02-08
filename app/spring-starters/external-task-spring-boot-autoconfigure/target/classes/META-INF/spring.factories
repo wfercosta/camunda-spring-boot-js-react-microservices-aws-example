@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.bank.bpm.partners.onboarding.starters.ExternalTaskAutoConfiguration

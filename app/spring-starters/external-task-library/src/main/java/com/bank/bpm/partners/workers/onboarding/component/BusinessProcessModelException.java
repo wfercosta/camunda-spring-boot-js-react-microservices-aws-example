@@ -11,7 +11,7 @@ import java.util.Objects;
 public abstract class BusinessProcessModelException extends RuntimeException {
 
 	private final String errorCode;
-	private Map<String, Object> variables = new HashMap<>();
+	private Map<String, Object> variables = Collections.emptyMap();
 
 	public BusinessProcessModelException(final String errorCode, final String message) {
 		super(message);
@@ -22,7 +22,7 @@ public abstract class BusinessProcessModelException extends RuntimeException {
 		this(errorCode, message);
 
 		if (Objects.nonNull(variables)) {
-			this.variables = variables;
+			this.variables = Collections.unmodifiableMap(variables);
 		}
 
 	}

@@ -11,13 +11,18 @@
 	<groupId>com.bank.bpm.partners.workers.onboarding</groupId>
 	<artifactId>ms-registration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>api-onboarding</name>
-	<description>API OnBoarding</description>
+	<name>ms-registration</name>
+	<description>MS Registration</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.bank.bpm.partners.onboarding</groupId>
+			<artifactId>external-task-spring-boot-starter</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-external-task-client</artifactId>

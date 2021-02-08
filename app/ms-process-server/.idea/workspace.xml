@@ -20,30 +20,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e94925be-e302-4abe-b2cf-6a14194c670c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../worker/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/src/main/java/com/bank/bpm/partners/api/onboarding/ApiOnboardingApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-onboarding/src/test/java/com/bank/bpm/partners/api/onboarding/ApiOnboardingApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/process-server.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/camunda-spring-boot.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Affiliate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Brand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditationConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/PartnerAccreditationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/ProcessInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/configuration/ExternalTaskConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-fraud/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-pld/src/test/java/com/bank/bpm/partners/api/onboarding/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/process-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/process-server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-registration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/java/com/bank/bpm/partners/workers/onboarding/ExternalTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-registration/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bpm/fraud_analysis.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bpm/pld_analysis.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bpm/pre-register.bpmn" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1npyWDedLVhqGKfG4VRe9R1JjcA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,6 +90,32 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bank.bpm.partners.onboarding.accreditation" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bank.bpm.partners.onboarding.Application" />
+      <module name="process-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bank.bpm.partners.onboarding.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -76,5 +141,62 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="584" y="247" key="#xdebugger.evaluate" timestamp="1612720645735">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="584" y="247" key="#xdebugger.evaluate/0.23.1680.1027@0.23.1680.1027" timestamp="1612720645735" />
+    <state width="478" height="466" key="DebuggerActiveHint" timestamp="1612720348585">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="478" height="466" key="DebuggerActiveHint/0.23.1680.1027@0.23.1680.1027" timestamp="1612720348585" />
+    <state width="1601" height="280" key="GridCell.Tab.0.bottom" timestamp="1612720736809">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1612720736809" />
+    <state width="1601" height="280" key="GridCell.Tab.0.center" timestamp="1612720736808">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1612720736808" />
+    <state width="1601" height="280" key="GridCell.Tab.0.left" timestamp="1612720736808">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1612720736808" />
+    <state width="1601" height="280" key="GridCell.Tab.0.right" timestamp="1612720736809">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1612720736809" />
+    <state width="1601" height="346" key="GridCell.Tab.1.bottom" timestamp="1612720718508">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="346" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1612720718508" />
+    <state width="1601" height="346" key="GridCell.Tab.1.center" timestamp="1612720718507">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="346" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1612720718507" />
+    <state width="1601" height="346" key="GridCell.Tab.1.left" timestamp="1612720718506">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="346" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1612720718506" />
+    <state width="1601" height="346" key="GridCell.Tab.1.right" timestamp="1612720718507">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1601" height="346" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1612720718507" />
+    <state x="486" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1612718226575">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="486" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1612718226575" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bank/bpm/partners/onboarding/accreditation/ProcessInfo.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

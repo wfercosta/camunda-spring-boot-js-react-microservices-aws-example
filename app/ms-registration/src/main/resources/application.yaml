@@ -13,3 +13,4 @@ itau:
         base-url: "http://localhost:8080"
         lock-duration: 30s
         async-timeout: 2s
+        max-retries: 1

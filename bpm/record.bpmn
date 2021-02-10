@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1w5j2rn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="Process_0461jnj" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0so8gaz</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1fd398i" sourceRef="Activity_1tbs1y0" targetRef="Activity_1uwb4bq" />
+    <bpmn:sequenceFlow id="Flow_03kmq1o" sourceRef="Activity_1uwb4bq" targetRef="Activity_0gsu6f3" />
+    <bpmn:sequenceFlow id="Flow_0cd6kgm" sourceRef="Activity_0gsu6f3" targetRef="Activity_1g88jmj" />
+    <bpmn:endEvent id="Event_1oaar1i">
+      <bpmn:incoming>Flow_06zv53u</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_06zv53u" sourceRef="Activity_1g88jmj" targetRef="Event_1oaar1i" />
+    <bpmn:sequenceFlow id="Flow_0so8gaz" sourceRef="StartEvent_1" targetRef="Activity_10v1xob" />
+    <bpmn:sequenceFlow id="Flow_183zukj" sourceRef="Activity_10v1xob" targetRef="Activity_1tbs1y0" />
+    <bpmn:serviceTask id="Activity_1tbs1y0" name="Grava dados do parceiro">
+      <bpmn:incoming>Flow_183zukj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fd398i</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1uwb4bq" name="Grava dados do coligado">
+      <bpmn:incoming>Flow_1fd398i</bpmn:incoming>
+      <bpmn:outgoing>Flow_03kmq1o</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0gsu6f3" name="Grava dados dos funcionários">
+      <bpmn:incoming>Flow_03kmq1o</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cd6kgm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1g88jmj" name="Grava dados das marcas">
+      <bpmn:incoming>Flow_0cd6kgm</bpmn:incoming>
+      <bpmn:outgoing>Flow_06zv53u</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_1yhhktb" name="Inconsitências cadastrais" attachedToRef="Activity_10v1xob">
+      <bpmn:outgoing>Flow_1hd796c</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0qpfheo" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1hd796c" sourceRef="Event_1yhhktb" targetRef="Event_0gw0zf0" />
+    <bpmn:endEvent id="Event_0gw0zf0" name="Inconsistências cadastrais">
+      <bpmn:incoming>Flow_1hd796c</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1myuq48" />
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_10v1xob" name="Validação de dados cadastrais">
+      <bpmn:incoming>Flow_0so8gaz</bpmn:incoming>
+      <bpmn:outgoing>Flow_183zukj</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0461jnj">
+      <bpmndi:BPMNEdge id="Flow_1fd398i_di" bpmnElement="Flow_1fd398i">
+        <di:waypoint x="550" y="120" />
+        <di:waypoint x="620" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03kmq1o_di" bpmnElement="Flow_03kmq1o">
+        <di:waypoint x="720" y="120" />
+        <di:waypoint x="790" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cd6kgm_di" bpmnElement="Flow_0cd6kgm">
+        <di:waypoint x="890" y="120" />
+        <di:waypoint x="960" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06zv53u_di" bpmnElement="Flow_06zv53u">
+        <di:waypoint x="1060" y="120" />
+        <di:waypoint x="1132" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0so8gaz_di" bpmnElement="Flow_0so8gaz">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_183zukj_di" bpmnElement="Flow_183zukj">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="450" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hd796c_di" bpmnElement="Flow_1hd796c">
+        <di:waypoint x="340" y="178" />
+        <di:waypoint x="340" y="240" />
+        <di:waypoint x="412" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1oaar1i_di" bpmnElement="Event_1oaar1i">
+        <dc:Bounds x="1132" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_047u6js_di" bpmnElement="Activity_1tbs1y0">
+        <dc:Bounds x="450" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10k09k3_di" bpmnElement="Activity_1uwb4bq">
+        <dc:Bounds x="620" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_105rrfu_di" bpmnElement="Activity_0gsu6f3">
+        <dc:Bounds x="790" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0icsu2z_di" bpmnElement="Activity_1g88jmj">
+        <dc:Bounds x="960" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_190pgf2_di" bpmnElement="Event_0gw0zf0">
+        <dc:Bounds x="412" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="392" y="265" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_073t09a_di" bpmnElement="Activity_10v1xob">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1eiak5y_di" bpmnElement="Event_1yhhktb">
+        <dc:Bounds x="322" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="255" y="185" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

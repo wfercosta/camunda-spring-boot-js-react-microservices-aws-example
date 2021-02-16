@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.UUID;
 
 import static com.bank.bpm.partners.workers.onboarding.moneylaundering.MoneyLaunderingConstants.PROCESS_INSTANCE_VAR_CORRELATION_ID;
+import static com.bank.bpm.partners.workers.onboarding.moneylaundering.MoneyLaunderingConstants.VARIABLE_BODY;
 
 @ExternalTaskController(topic = "mlp_submit")
 public class MoneyLaunderingSubmitExternalTask implements ExternalTaskHandler {
@@ -21,10 +22,12 @@ public class MoneyLaunderingSubmitExternalTask implements ExternalTaskHandler {
 	@SneakyThrows
 	@Override
 	public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+		LOG.info("  -> External Task started: {}", this.getClass().getName());
 
 		final String correlationId = UUID.randomUUID().toString();
 
-		LOG.info("  -> (External Task) Correlation ID: {}", correlationId);
+		LOG.info("      ----> Correlation ID: {}", correlationId);
+		LOG.info("      ----> Message: {}", (String) externalTask.getVariable(VARIABLE_BODY));
 
 		externalTaskService.complete(externalTask,
 				Collections.singletonMap(PROCESS_INSTANCE_VAR_CORRELATION_ID, correlationId));

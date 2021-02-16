@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PartnerAccreditation {
+public class Partner {
 
 	@JsonProperty("document_number")
 	private String documentNumber;

@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 import static com.bank.bpm.partners.onboarding.partner.PartnerConstants.*;
 
 @Component
-public class PartnerActivityAnalyseMoneyLaunderingMapping implements DelegateVariableMapping {
+public class PartnerActivityAnalyzeMoneyLaunderingMapping implements DelegateVariableMapping {
 
 	private final ObjectMapper objectMapper;
 
-	public PartnerActivityAnalyseMoneyLaunderingMapping(ObjectMapper objectMapper) {
+	public PartnerActivityAnalyzeMoneyLaunderingMapping(ObjectMapper objectMapper) {
 		this.objectMapper = objectMapper;
 	}
 

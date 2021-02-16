@@ -1,13 +1,14 @@
-package com.bank.bpm.partners.onboarding.accreditation;
+package com.bank.bpm.partners.onboarding.shared;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PartnerAccreditation {
+public class Partner {
 
 	@JsonProperty("document_number")
 	private String documentNumber;

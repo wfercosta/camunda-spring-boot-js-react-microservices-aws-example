@@ -1,15 +1,15 @@
-package com.bank.bpm.partners.onboarding.accreditation;
+package com.bank.bpm.partners.onboarding.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Employee {
-
-	@JsonProperty("full_name")
-	private String fullName;
+public class Affiliate {
 
 	@JsonProperty("document_number")
 	private String documentNumber;
+
+	@JsonProperty("business_name")
+	private String businessName;
 
 }

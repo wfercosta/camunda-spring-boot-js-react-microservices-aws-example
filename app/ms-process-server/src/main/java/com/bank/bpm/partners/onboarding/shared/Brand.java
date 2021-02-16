@@ -1,4 +1,4 @@
-package com.bank.bpm.partners.onboarding.accreditation;
+package com.bank.bpm.partners.onboarding.shared;
 
 import lombok.Data;
 

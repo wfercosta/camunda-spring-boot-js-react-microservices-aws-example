@@ -1,4 +1,4 @@
-package com.bank.bpm.partners.onboarding.accreditation;
+package com.bank.bpm.partners.onboarding.partner;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

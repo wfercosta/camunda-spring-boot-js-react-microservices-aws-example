@@ -1,4 +1,4 @@
-package com.bank.bpm.partners.workers.onboarding.accreditation;
+package com.bank.bpm.partners.workers.onboarding.shared;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

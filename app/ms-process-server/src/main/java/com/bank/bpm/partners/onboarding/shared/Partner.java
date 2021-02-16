@@ -11,7 +11,7 @@ import java.util.List;
 public class Partner {
 
 	@JsonProperty("document_number")
-	private String documentNumber;
+	private DocumentNumber documentNumber;
 
 	@JsonProperty("business_name")
 	private String businessName;

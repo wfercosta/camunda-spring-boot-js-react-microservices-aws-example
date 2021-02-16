@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.bank.bpm.partners.onboarding.moneylaundering.MoneyLaunderingConstants.*;
-import static com.bank.bpm.partners.onboarding.moneylaundering.MoneyLaunderingStatusType.SUITABLE;
+import static com.bank.bpm.partners.onboarding.shared.MoneyLaunderingStatusType.SUITABLE;
 
 
 @RestController

@@ -7,7 +7,7 @@ import lombok.Data;
 public class Affiliate {
 
 	@JsonProperty("document_number")
-	private String documentNumber;
+	private DocumentNumber documentNumber;
 
 	@JsonProperty("business_name")
 	private String businessName;

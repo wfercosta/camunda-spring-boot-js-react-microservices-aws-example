@@ -1,4 +1,4 @@
-package com.bank.bpm.partners.onboarding.moneylaundering;
+package com.bank.bpm.partners.onboarding.shared;
 
 import lombok.Getter;
 

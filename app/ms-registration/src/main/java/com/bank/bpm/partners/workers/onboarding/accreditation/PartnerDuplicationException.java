@@ -1,6 +1,7 @@
 package com.bank.bpm.partners.workers.onboarding.accreditation;
 
 import com.bank.bpm.partners.workers.onboarding.component.BusinessProcessModelException;
+import com.bank.bpm.partners.workers.onboarding.shared.Partner;
 
 import java.text.MessageFormat;
 

@@ -1,22 +1,24 @@
 package com.bank.bpm.partners.onboarding.shared;
 
-import com.bank.bpm.partners.onboarding.moneylaundering.MoneyLaunderingStatusType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 public class MoneyLaunderingAnalyzeEntry {
-	private String document;
+
+	@JsonProperty("document_number")
+	private DocumentNumber documentNumber;
 	private String name;
 	private MoneyLaunderingStatusType status;
 
-	public MoneyLaunderingAnalyzeEntry(String name, String document) {
+	public MoneyLaunderingAnalyzeEntry(String name, DocumentNumber documentNumber) {
 		this.name = name;
-		this.document = document;
+		this.documentNumber = documentNumber;
 	}
 
-	public static MoneyLaunderingAnalyzeEntry of(String name, String document) {
+	public static MoneyLaunderingAnalyzeEntry of(String name, DocumentNumber document) {
 		return new MoneyLaunderingAnalyzeEntry(name, document);
 	}
 }

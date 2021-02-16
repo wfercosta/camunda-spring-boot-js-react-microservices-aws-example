@@ -10,6 +10,6 @@ public class Employee {
 	private String fullName;
 
 	@JsonProperty("document_number")
-	private String documentNumber;
+	private DocumentNumber documentNumber;
 
 }

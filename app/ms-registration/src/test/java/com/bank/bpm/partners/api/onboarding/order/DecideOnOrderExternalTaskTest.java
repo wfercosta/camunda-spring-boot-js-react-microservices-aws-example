@@ -98,6 +98,7 @@ public class DecideOnOrderExternalTaskTest {
 	@DisplayName("Should return requires payment and no warehouse reservation is needed when has cost greater than zero and no id product")
 	public void Should_return_requires_payment_and_no_warehouse_reservation_is_needed_when_has_cost_greater_than_zero_and_no_product_id() throws JsonProcessingException {
 
+		//Arrange
 		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_WAREHOUSE_RESERVATION);
 		when(externalTask.getVariable("order")).thenReturn(this.mapper.writeValueAsString(fixture));
 

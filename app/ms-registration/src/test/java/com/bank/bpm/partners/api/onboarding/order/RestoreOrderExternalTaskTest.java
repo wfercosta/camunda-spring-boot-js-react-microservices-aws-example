@@ -34,7 +34,10 @@ public class RestoreOrderExternalTaskTest {
 
 	private RestoreOrderExternalTask sut;
 
+	@Mock
 	private ExternalTask externalTask;
+
+	@Mock
 	private ExternalTaskService externalTaskService;
 
 	@Mock
@@ -50,11 +53,8 @@ public class RestoreOrderExternalTaskTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		this.externalTask = mock(ExternalTask.class);
-		this.externalTaskService = mock(ExternalTaskService.class);
 		this.sut = new RestoreOrderExternalTask(new ObjectMapper(), useCase);
 	}
-
 
 	@Test
 	@DisplayName("Should return requires payment and reserve warehouse When item has cost and is physical")

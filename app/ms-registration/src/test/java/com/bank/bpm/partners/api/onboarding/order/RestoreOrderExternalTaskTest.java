@@ -135,9 +135,7 @@ public class RestoreOrderExternalTaskTest {
 		when(useCase.execute(fixture)).thenReturn(Optional.empty());
 
 		//Act & Assert
-		assertThrows(OrderNotFoundException.class, () -> {
-			sut.execute(externalTask, externalTaskService);
-		});
+		assertThrows(OrderNotFoundException.class, () -> sut.execute(externalTask, externalTaskService));
 
 	}
 

@@ -37,8 +37,6 @@ public class RestoreOrderExternalTaskTest {
 	private ExternalTask externalTask;
 	private ExternalTaskService externalTaskService;
 
-	private ObjectMapper objectMapper = new ObjectMapper();
-
 	@Mock
 	private RestoreOderUseCase useCase;
 
@@ -52,10 +50,9 @@ public class RestoreOrderExternalTaskTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		this.objectMapper = new ObjectMapper();
 		this.externalTask = mock(ExternalTask.class);
 		this.externalTaskService = mock(ExternalTaskService.class);
-		this.sut = new RestoreOrderExternalTask(this.objectMapper, useCase);
+		this.sut = new RestoreOrderExternalTask(new ObjectMapper(), useCase);
 	}
 
 
@@ -83,7 +80,7 @@ public class RestoreOrderExternalTaskTest {
 	}
 
 	@Test
-	@DisplayName("Should return  no payment required and reserve warehouse When item has cost equals zero and is physical")
+	@DisplayName("Should return no payment required and reserve warehouse When item has cost equals zero and is physical")
 	public void Should_return_requires_no_payment_required_and_reserve_warehouse_When_item_has_cost_equals_zero_and_is_physical() throws JsonProcessingException {
 
 		//Arrange

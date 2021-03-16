@@ -11,8 +11,8 @@
       <bpmn:outgoing>Flow_0oyebn3</bpmn:outgoing>
       <bpmn:outgoing>Flow_03yze3d</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0oyebn3" name="Phisical product" sourceRef="Gateway_1leguyi" targetRef="Activity_0doidkx" />
-    <bpmn:sequenceFlow id="Flow_03yze3d" name="Requires payment" sourceRef="Gateway_1leguyi" targetRef="Activity_16ckyf8" />
+    <bpmn:sequenceFlow id="Flow_0oyebn3" name="has dispatchable" sourceRef="Gateway_1leguyi" targetRef="Activity_0doidkx" />
+    <bpmn:sequenceFlow id="Flow_03yze3d" name="has cost" sourceRef="Gateway_1leguyi" targetRef="Activity_16ckyf8" />
     <bpmn:sequenceFlow id="Flow_1waj29i" sourceRef="Activity_0doidkx" targetRef="Gateway_0r52ajz" />
     <bpmn:inclusiveGateway id="Gateway_0r52ajz">
       <bpmn:incoming>Flow_1waj29i</bpmn:incoming>
@@ -40,7 +40,7 @@
     <bpmn:boundaryEvent id="Event_0icgyrj" attachedToRef="Activity_16ckyf8">
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_18jqjbg" />
     </bpmn:boundaryEvent>
-    <bpmn:serviceTask id="Activity_1wr3bab" name="Decide on order">
+    <bpmn:serviceTask id="Activity_1wr3bab" name="Restore order data">
       <bpmn:incoming>Flow_0ndsyd4</bpmn:incoming>
       <bpmn:outgoing>Flow_0v653ac</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -72,14 +72,14 @@
         <di:waypoint x="500" y="240" />
         <di:waypoint x="680" y="240" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="551" y="213" width="78" height="14" />
+          <dc:Bounds x="549" y="213" width="83" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03yze3d_di" bpmnElement="Flow_03yze3d">
         <di:waypoint x="525" y="397" />
         <di:waypoint x="680" y="397" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="545" y="379" width="90" height="14" />
+          <dc:Bounds x="570" y="379" width="41" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1waj29i_di" bpmnElement="Flow_1waj29i">

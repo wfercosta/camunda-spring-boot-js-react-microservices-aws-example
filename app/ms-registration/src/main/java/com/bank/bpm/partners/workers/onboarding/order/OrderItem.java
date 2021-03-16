@@ -5,13 +5,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode
-public class Order {
+public class OrderItem {
 
+	@EqualsAndHashCode.Exclude
 	private Long id;
-
-	@EqualsAndHashCode.Exclude
-	private OrderItem item;
-
-	@EqualsAndHashCode.Exclude
-	private Double cost;
+	private boolean virtual;
 }

@@ -4,6 +4,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import com.bank.bpm.partners.workers.onboarding.order.Order;
+import com.bank.bpm.partners.workers.onboarding.order.OrderItem;
 
 public class OrderTemplate implements TemplateLoader {
 
@@ -15,7 +16,7 @@ public class OrderTemplate implements TemplateLoader {
 	public void load() {
 		Fixture.of(Order.class).addTemplate(NEEDS_PAYMENT_AND_PHYSICAL, new Rule() {{
 			add("id", random(Long.class, range(1L, 200L)));
-			add("productId", 1L);
+			add("item", one(OrderItem.class, OrderItemTemplate.DISPATCHABLE_PRODUCT));
 			add("cost", 10.0);
 		}});
 
@@ -24,7 +25,7 @@ public class OrderTemplate implements TemplateLoader {
 		}});
 
 		Fixture.of(Order.class).addTemplate(NO_WAREHOUSE_RESERVATION).inherits(NEEDS_PAYMENT_AND_PHYSICAL, new Rule() {{
-			add("productId", 0L);
+			add("item", one(OrderItem.class, OrderItemTemplate.NON_DISPATCHABLE_PRODUCT));
 		}});
 	}
 }

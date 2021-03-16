@@ -2,8 +2,10 @@ package com.bank.bpm.partners.api.onboarding.order;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import com.bank.bpm.partners.workers.onboarding.order.DecideOnOrderExternalTask;
 import com.bank.bpm.partners.workers.onboarding.order.Order;
+import com.bank.bpm.partners.workers.onboarding.order.OrderNotFoundException;
+import com.bank.bpm.partners.workers.onboarding.order.RestoreOderUseCase;
+import com.bank.bpm.partners.workers.onboarding.order.RestoreOrderExternalTask;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.client.task.ExternalTask;
@@ -15,25 +17,30 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.Spy;
+import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.hasKey;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class DecideOnOrderExternalTaskTest {
+public class RestoreOrderExternalTaskTest {
 
-	private DecideOnOrderExternalTask sut;
+	private RestoreOrderExternalTask sut;
 
 	private ExternalTask externalTask;
 	private ExternalTaskService externalTaskService;
 
-	@Spy
-	private ObjectMapper mapper = new ObjectMapper();
+	private ObjectMapper objectMapper = new ObjectMapper();
+
+	@Mock
+	private RestoreOderUseCase useCase;
 
 	@Captor
 	private ArgumentCaptor<Map<String, Object>> variablesCaptor;
@@ -45,10 +52,10 @@ public class DecideOnOrderExternalTaskTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		this.mapper = new ObjectMapper();
+		this.objectMapper = new ObjectMapper();
 		this.externalTask = mock(ExternalTask.class);
 		this.externalTaskService = mock(ExternalTaskService.class);
-		this.sut = new DecideOnOrderExternalTask(this.mapper);
+		this.sut = new RestoreOrderExternalTask(this.objectMapper, useCase);
 	}
 
 
@@ -58,7 +65,8 @@ public class DecideOnOrderExternalTaskTest {
 
 		//Arrange
 		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NEEDS_PAYMENT_AND_PHYSICAL);
-		when(externalTask.getVariable("order")).thenReturn(this.mapper.writeValueAsString(fixture));
+		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
+		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
 		//Act
 		sut.execute(externalTask, externalTaskService);
@@ -68,8 +76,9 @@ public class DecideOnOrderExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("is_make_payment", Boolean.TRUE));
-		assertThat(captured, hasEntry("is_physical", Boolean.TRUE));
+		assertThat(captured, hasEntry("has_cost", Boolean.TRUE));
+		assertThat(captured, hasEntry("has_dispatchable", Boolean.TRUE));
+		assertThat(captured, hasKey("order"));
 
 	}
 
@@ -79,7 +88,8 @@ public class DecideOnOrderExternalTaskTest {
 
 		//Arrange
 		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_PAYMENT_IS_NEEDED);
-		when(externalTask.getVariable("order")).thenReturn(this.mapper.writeValueAsString(fixture));
+		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
+		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
 		//Act
 		sut.execute(externalTask, externalTaskService);
@@ -89,8 +99,9 @@ public class DecideOnOrderExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("is_make_payment", Boolean.FALSE));
-		assertThat(captured, hasEntry("is_physical", Boolean.TRUE));
+		assertThat(captured, hasEntry("has_cost", Boolean.FALSE));
+		assertThat(captured, hasEntry("has_dispatchable", Boolean.TRUE));
+		assertThat(captured, hasKey("order"));
 	}
 
 
@@ -100,7 +111,8 @@ public class DecideOnOrderExternalTaskTest {
 
 		//Arrange
 		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_WAREHOUSE_RESERVATION);
-		when(externalTask.getVariable("order")).thenReturn(this.mapper.writeValueAsString(fixture));
+		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
+		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
 		//Act
 		sut.execute(externalTask, externalTaskService);
@@ -110,8 +122,25 @@ public class DecideOnOrderExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("is_make_payment", Boolean.TRUE));
-		assertThat(captured, hasEntry("is_physical", Boolean.FALSE));
+		assertThat(captured, hasEntry("has_cost", Boolean.TRUE));
+		assertThat(captured, hasEntry("has_dispatchable", Boolean.FALSE));
+		assertThat(captured, hasKey("order"));
+
+	}
+
+	@Test
+	@DisplayName("Should throw order not found When it is not found")
+	public void Should_throw_order_not_found_When_it_is_not_found() {
+
+		//Arrange
+		final Long fixture = 100L;
+		when(externalTask.getVariable("order_id")).thenReturn(fixture);
+		when(useCase.execute(fixture)).thenReturn(Optional.empty());
+
+		//Act & Assert
+		assertThrows(OrderNotFoundException.class, () -> {
+			sut.execute(externalTask, externalTaskService);
+		});
 
 	}
 

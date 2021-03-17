@@ -1,10 +1,7 @@
-package com.bank.bpm.partners.api.onboarding.order;
+package com.bank.bpm.partners.workers.onboarding.order;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import com.bank.bpm.partners.workers.onboarding.order.Order;
-import com.bank.bpm.partners.workers.onboarding.order.OrderRepository;
-import com.bank.bpm.partners.workers.onboarding.order.RestoreOderUseCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

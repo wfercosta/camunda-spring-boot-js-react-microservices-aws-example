@@ -1,10 +1,8 @@
-package com.bank.bpm.partners.api.onboarding.order;
+package com.bank.bpm.partners.workers.onboarding.order;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
-import com.bank.bpm.partners.workers.onboarding.order.Order;
-import com.bank.bpm.partners.workers.onboarding.order.OrderItem;
 
 public class OrderTemplate implements TemplateLoader {
 

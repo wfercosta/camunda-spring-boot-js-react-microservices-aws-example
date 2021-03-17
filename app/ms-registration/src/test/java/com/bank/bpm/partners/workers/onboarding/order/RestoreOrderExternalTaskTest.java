@@ -1,11 +1,7 @@
-package com.bank.bpm.partners.api.onboarding.order;
+package com.bank.bpm.partners.workers.onboarding.order;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import com.bank.bpm.partners.workers.onboarding.order.Order;
-import com.bank.bpm.partners.workers.onboarding.order.OrderNotFoundException;
-import com.bank.bpm.partners.workers.onboarding.order.RestoreOderUseCase;
-import com.bank.bpm.partners.workers.onboarding.order.RestoreOrderExternalTask;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.client.task.ExternalTask;

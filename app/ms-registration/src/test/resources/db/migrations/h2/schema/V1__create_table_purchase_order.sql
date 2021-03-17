@@ -1,0 +1,10 @@
+CREATE TABLE purchase_order (
+  id INT NOT NULL,
+  cost DECIMAL NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE SEQUENCE purchase_order_seq
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1;

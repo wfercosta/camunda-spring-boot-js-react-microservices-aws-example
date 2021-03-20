@@ -1,6 +1,9 @@
 CREATE TABLE purchase_order (
   id INT NOT NULL,
-  cost DECIMAL NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  customer_id INT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id)
 );
 

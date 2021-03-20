@@ -57,7 +57,7 @@ public class RestoreOrderExternalTaskTest {
 	public void Should_return_requires_payment_and_reserve_warehouse_When_item_has_cost_and_is_Physical() throws JsonProcessingException {
 
 		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NEEDS_PAYMENT_AND_PHYSICAL);
+		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_DISPATCHABLE_PRODUCT);
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
@@ -69,34 +69,10 @@ public class RestoreOrderExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("has_cost", Boolean.TRUE));
 		assertThat(captured, hasEntry("has_dispatchable", Boolean.TRUE));
 		assertThat(captured, hasKey("order"));
 
 	}
-
-	@Test
-	@DisplayName("Should return no payment required and reserve warehouse When item has cost equals zero and is physical")
-	public void Should_return_requires_no_payment_required_and_reserve_warehouse_When_item_has_cost_equals_zero_and_is_physical() throws JsonProcessingException {
-
-		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_PAYMENT_IS_NEEDED);
-		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
-		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
-
-		//Act
-		sut.execute(externalTask, externalTaskService);
-
-		//Assert
-		verify(externalTaskService).complete(eq(externalTask), variablesCaptor.capture());
-
-		Map<String, Object> captured = variablesCaptor.getValue();
-
-		assertThat(captured, hasEntry("has_cost", Boolean.FALSE));
-		assertThat(captured, hasEntry("has_dispatchable", Boolean.TRUE));
-		assertThat(captured, hasKey("order"));
-	}
-
 
 	@Test
 	@DisplayName("Should return requires payment and no warehouse reservation is needed when has cost greater than zero and no id product")
@@ -107,6 +83,8 @@ public class RestoreOrderExternalTaskTest {
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
+		System.out.println("------------------------> " + fixture);
+
 		//Act
 		sut.execute(externalTask, externalTaskService);
 
@@ -115,7 +93,6 @@ public class RestoreOrderExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("has_cost", Boolean.TRUE));
 		assertThat(captured, hasEntry("has_dispatchable", Boolean.FALSE));
 		assertThat(captured, hasKey("order"));
 

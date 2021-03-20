@@ -31,16 +31,12 @@ public class RestoreOrderExternalTask implements ExternalTaskHandler {
 
 		externalTaskService
 				.complete(externalTask,
-						Map.of("has_cost", hasCost(order),
-								"has_dispatchable", hasDispatchable(order),
+						Map.of("has_dispatchable", hasDispatchable(order),
 								"order", this.objectMapper.writeValueAsString(order)));
 	}
 
 	private Boolean hasDispatchable(Order order) {
-		return !order.getItem().isVirtual();
+		return order.getItems().stream().noneMatch(OrderItem::isVirtual);
 	}
 
-	private Boolean hasCost(Order order) {
-		return order.getCost() > 0;
-	}
 }

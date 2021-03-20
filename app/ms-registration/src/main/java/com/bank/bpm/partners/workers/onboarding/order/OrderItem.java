@@ -3,9 +3,14 @@ package com.bank.bpm.partners.workers.onboarding.order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
+@ToString
 @Data
 @EqualsAndHashCode
 @Entity
@@ -20,8 +25,24 @@ public class OrderItem {
 	@Column(name = "is_virtual")
 	private boolean virtual;
 
-	@OneToOne
-	@JoinColumn(name = "purchase_order_id", referencedColumnName = "id")
+	private String sku;
+
+	private Double price;
+
+	private int quantity;
+
+	@ManyToOne
+	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	@JsonBackReference
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	private Order order;
+
+	@CreatedDate
+	@EqualsAndHashCode.Exclude
+	private LocalDateTime createdAt;
+
+	@LastModifiedDate
+	@EqualsAndHashCode.Exclude
+	private LocalDateTime updatedAt;
 }

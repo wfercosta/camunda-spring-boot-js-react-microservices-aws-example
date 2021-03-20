@@ -43,7 +43,7 @@ public class RestoreOrderUseCaseTest {
 	public void Should_restore_order_When_its_id_is_valid() {
 
 		//Arrange
-		final Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_DISPATCHABLE_PRODUCT);
+		final Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.BASIC);
 		when(repository.findById(fixture.getId())).thenReturn(Optional.of(fixture));
 
 		//Act

@@ -26,9 +26,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class RestoreOrderExternalTaskTest {
+public class RestoreOrderForProcessingExternalTaskTest {
 
-	private RestoreOrderExternalTask sut;
+	private RestoreOrderForProcessingExternalTask sut;
 
 	@Mock
 	private ExternalTask externalTask;
@@ -49,15 +49,15 @@ public class RestoreOrderExternalTaskTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		this.sut = new RestoreOrderExternalTask(new ObjectMapper(), useCase);
+		this.sut = new RestoreOrderForProcessingExternalTask(new ObjectMapper(), useCase);
 	}
 
 	@Test
-	@DisplayName("Should return requires payment and reserve warehouse When item has cost and is physical")
-	public void Should_return_requires_payment_and_reserve_warehouse_When_item_has_cost_and_is_Physical() throws JsonProcessingException {
+	@DisplayName("Should restore order as dispatchable when the product is not virtual")
+	public void Should_restore_order_as_dispatchable_When_the_product_is_not_virtual() throws JsonProcessingException {
 
 		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_DISPATCHABLE_PRODUCT);
+		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.STATE_PROCESSING_DISPATCHABLE_PRODUCT);
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
@@ -75,15 +75,13 @@ public class RestoreOrderExternalTaskTest {
 	}
 
 	@Test
-	@DisplayName("Should return requires payment and no warehouse reservation is needed when has cost greater than zero and no id product")
-	public void Should_return_requires_payment_and_no_warehouse_reservation_is_needed_when_has_cost_greater_than_zero_and_no_product_id() throws JsonProcessingException {
+	@DisplayName("Should restore order as non dispatchable when the product is virtual")
+	public void Should_restore_order_as_non_dispatchable_When_the_product_is_virtual() throws JsonProcessingException {
 
 		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.NO_WAREHOUSE_RESERVATION);
+		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.STATE_PROCESSING_NON_DISPATCHABLE_PRODUCT);
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
-
-		System.out.println("------------------------> " + fixture);
 
 		//Act
 		sut.execute(externalTask, externalTaskService);
@@ -99,8 +97,8 @@ public class RestoreOrderExternalTaskTest {
 	}
 
 	@Test
-	@DisplayName("Should throw order not found When it is not found")
-	public void Should_throw_order_not_found_When_it_is_not_found() {
+	@DisplayName("Should throw order not found when invalid ID")
+	public void Should_throw_order_not_Found_When_invalid_ID() {
 
 		//Arrange
 		final Long fixture = 100L;

@@ -10,12 +10,12 @@ import org.camunda.bpm.client.task.ExternalTaskService;
 import java.util.Map;
 
 @ExternalTaskController(topic = "process_order")
-public class RestoreOrderExternalTask implements ExternalTaskHandler {
+public class RestoreOrderForProcessingExternalTask implements ExternalTaskHandler {
 
 	private final ObjectMapper objectMapper;
 	private final RestoreOderUseCase useCase;
 
-	public RestoreOrderExternalTask(final ObjectMapper objectMapper, final RestoreOderUseCase useCase) {
+	public RestoreOrderForProcessingExternalTask(final ObjectMapper objectMapper, final RestoreOderUseCase useCase) {
 		this.objectMapper = objectMapper;
 		this.useCase = useCase;
 	}

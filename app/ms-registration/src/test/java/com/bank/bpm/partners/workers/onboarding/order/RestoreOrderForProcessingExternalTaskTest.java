@@ -65,6 +65,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 		sut.execute(externalTask, externalTaskService);
 
 		//Assertion
+		verify(useCase).execute(eq(fixture.getId()));
 		verify(externalTaskService).complete(eq(externalTask), variablesCaptor.capture());
 
 		Map<String, Object> captured = variablesCaptor.getValue();
@@ -87,6 +88,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 		sut.execute(externalTask, externalTaskService);
 
 		//Assert
+		verify(useCase).execute(eq(fixture.getId()));
 		verify(externalTaskService).complete(eq(externalTask), variablesCaptor.capture());
 
 		Map<String, Object> captured = variablesCaptor.getValue();
@@ -107,6 +109,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 
 		//Act & Assert
 		assertThrows(OrderNotFoundException.class, () -> sut.execute(externalTask, externalTaskService));
+		verify(useCase).execute(eq(fixture));
 
 	}
 

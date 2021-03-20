@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
+import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_NEW;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -33,7 +34,21 @@ public class OrderRepositoryTest {
 		final Long fixture = 1L;
 
 		//Act
-		final Optional<Order> result = this.sut.findById(fixture);
+		final Optional<Order> result = sut.findById(fixture);
+
+		//Asserts
+		assertThat(result, notNullValue());
+		assertThat(result.isPresent(), is(Boolean.TRUE));
+	}
+
+	@Test
+	@DisplayName("Should return order details Whe its id exists and and with the required status")
+	public void Should_return_order_details_When_exists_and_with_required_status() {
+		//Arrange
+		final Long fixture = 2L;
+
+		//Act
+		final Optional<Order> result = sut.findByIdAndStatus(fixture, ORDER_NEW);
 
 		//Asserts
 		assertThat(result, notNullValue());

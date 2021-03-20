@@ -12,6 +12,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
+import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_NEW;
+import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_PROCESSING;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -39,35 +41,41 @@ public class RestoreOrderUseCaseTest {
 	}
 
 	@Test
-	@DisplayName("Should restore the order details When its id is valid")
-	public void Should_restore_order_When_its_id_is_valid() {
+	@DisplayName("Should restore the order with processing state When the order exists and its state is new")
+	public void Should_restore_order_processing_state_When_order_exists_and_state_new() {
 
 		//Arrange
 		final Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.BASIC);
-		when(repository.findById(fixture.getId())).thenReturn(Optional.of(fixture));
+		final Order fixtureUpdated = fixture.toBuilder().status(ORDER_PROCESSING).build();
+
+		when(repository.findByIdAndStatus(fixture.getId(), ORDER_NEW)).thenReturn(Optional.of(fixture));
+		when(repository.save(fixtureUpdated)).thenReturn(fixtureUpdated);
 
 		//Act
 		final Optional<Order> result = this.sut.execute(fixture.getId());
 
 		//Assert
-		verify(repository).findById(eq(fixture.getId()));
+		verify(repository).findByIdAndStatus(eq(fixture.getId()), eq(ORDER_NEW));
+		verify(repository).save(eq(fixtureUpdated));
+
 		assertThat(result, notNullValue());
 		assertThat(result.isPresent(), is(Boolean.TRUE));
+		assertThat(result.get().getStatus(), is(ORDER_PROCESSING));
 	}
 
 	@Test
-	@DisplayName("Should return empty When it is invalid order id")
-	public void Should_return_empty_When_it_is_invalid_order_id() {
+	@DisplayName("Should return empty When order not exists")
+	public void Should_return_empty_When_order_not_exists() {
 
 		//Arrange
 		final Long fixture = 100L;
-		when(repository.findById(fixture)).thenReturn(Optional.empty());
+		when(repository.findByIdAndStatus(fixture, ORDER_NEW)).thenReturn(Optional.empty());
 
 		//Act
 		final Optional<Order> result = this.sut.execute(fixture);
 
 		//Assert
-		verify(repository).findById(fixture);
+		verify(repository).findByIdAndStatus(eq(fixture), eq(ORDER_NEW));
 		assertThat(result, notNullValue());
 		assertThat(result.isPresent(), is(Boolean.FALSE));
 

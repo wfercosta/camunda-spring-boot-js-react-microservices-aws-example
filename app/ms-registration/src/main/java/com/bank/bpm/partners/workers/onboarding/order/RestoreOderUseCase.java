@@ -15,7 +15,17 @@ public class RestoreOderUseCase implements UseCase<Optional<Order>, Long> {
 
 	@Override
 	public Optional<Order> execute(Long id) {
-		return repository.findById(id);
+
+		Optional<Order> optional = repository.findByIdAndStatus(id, OrderStatus.ORDER_NEW);
+
+		if (optional.isEmpty()) {
+			return optional;
+		}
+
+		Order order = optional.get();
+		order.setStatus(OrderStatus.ORDER_PROCESSING);
+
+		return Optional.of(repository.save(order));
 	}
 
 }

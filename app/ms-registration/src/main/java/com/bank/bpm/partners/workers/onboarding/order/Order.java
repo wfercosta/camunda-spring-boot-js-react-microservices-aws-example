@@ -1,9 +1,7 @@
 package com.bank.bpm.partners.workers.onboarding.order;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -14,6 +12,9 @@ import java.util.List;
 @ToString
 @Data
 @EqualsAndHashCode
+@Builder(toBuilder = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "purchase_order")
 public class Order {

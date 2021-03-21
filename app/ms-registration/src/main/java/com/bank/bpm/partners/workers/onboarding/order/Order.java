@@ -29,10 +29,14 @@ public class Order {
 	private Long id;
 
 	@EqualsAndHashCode.Exclude
+	@JsonManagedReference("order-items")
 	@OneToMany(mappedBy = "order")
-	@JsonManagedReference
-	@Transient
 	private List<OrderItem> items;
+
+	@EqualsAndHashCode.Exclude
+	@JsonManagedReference("order-invoice")
+	@OneToOne(mappedBy = "order")
+	private Invoice invoice;
 
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;

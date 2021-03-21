@@ -1,6 +1,6 @@
 CREATE TABLE purchase_orders (
   id INT NOT NULL,
-  status VARCHAR(20) NOT NULL,
+  status VARCHAR(40) NOT NULL,
   customer_id INT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),

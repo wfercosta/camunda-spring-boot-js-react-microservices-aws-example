@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode
 @Entity
-@Table(name = "purchase_order_item")
+@Table(name = "purchase_order_items")
 public class OrderItem {
 
 	@Id
@@ -34,7 +34,7 @@ public class OrderItem {
 
 	@ManyToOne
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	@JsonBackReference
+	@JsonBackReference("order-items")
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	private Order order;

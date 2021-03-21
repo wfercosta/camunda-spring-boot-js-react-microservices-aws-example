@@ -22,6 +22,7 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasKey;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -83,6 +84,21 @@ public class ProcessInvoiceExternalTaskTest {
 		assertThat(captured, hasKey("invoice"));
 		assertThat(captured, hasKey("order"));
 		assertThat((String) captured.get("order"), containsString(OrderStatus.ORDER_INVOICED.name()));
+
+	}
+
+	@Test
+	@DisplayName("Should throws an error Invoice Not Processed When it is not present")
+	public void Should_throws_error_invoice_not_processed_When_it_is_not_present() throws JsonProcessingException {
+
+		//Arrange
+		final Invoice invoice = Fixture.from(Invoice.class).gimme(InvoiceTemplate.BASIC);
+
+		when(externalTask.getVariable("order")).thenReturn(objectMapper.writeValueAsString(invoice.getOrder()));
+		when(useCase.execute(invoice.getOrder())).thenReturn(Optional.empty());
+
+		//Act & Assert
+		assertThrows(InvoiceNotProcessedException.class, () -> sut.execute(externalTask, externalTaskService));
 
 	}
 }

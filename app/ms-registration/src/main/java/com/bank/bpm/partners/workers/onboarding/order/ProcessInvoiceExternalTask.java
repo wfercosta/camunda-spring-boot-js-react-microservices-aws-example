@@ -8,7 +8,6 @@ import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
 
 import java.util.Map;
-import java.util.Optional;
 
 @ExternalTaskController(topic = "order_process_invoice")
 public class ProcessInvoiceExternalTask implements ExternalTaskHandler {
@@ -27,9 +26,8 @@ public class ProcessInvoiceExternalTask implements ExternalTaskHandler {
 		final String jsonOrder = externalTask.getVariable("order");
 		final Order order = objectMapper.readValue(jsonOrder, Order.class);
 
-		Optional<Invoice> optional = useCase.execute(order);
-
-		Invoice invoice = optional.get();
+		Invoice invoice = useCase.execute(order)
+				.orElseThrow(() -> InvoiceNotProcessedException.from(order));
 
 		externalTaskService.complete(externalTask,
 				Map.of("invoice", objectMapper.writeValueAsString(invoice),

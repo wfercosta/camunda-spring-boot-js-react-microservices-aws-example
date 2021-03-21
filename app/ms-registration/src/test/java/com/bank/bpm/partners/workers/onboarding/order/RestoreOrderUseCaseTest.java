@@ -15,8 +15,7 @@ import java.util.Optional;
 import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_NEW;
 import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_PROCESSING;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -52,15 +51,14 @@ public class RestoreOrderUseCaseTest {
 		when(repository.save(fixtureUpdated)).thenReturn(fixtureUpdated);
 
 		//Act
-		final Optional<Order> result = this.sut.execute(fixture.getId());
+		final Order result = this.sut.execute(fixture.getId()).orElse(null);
 
 		//Assert
 		verify(repository).findByIdAndStatus(eq(fixture.getId()), eq(ORDER_NEW));
 		verify(repository).save(eq(fixtureUpdated));
 
 		assertThat(result, notNullValue());
-		assertThat(result.isPresent(), is(Boolean.TRUE));
-		assertThat(result.get().getStatus(), is(ORDER_PROCESSING));
+		assertThat(result.getStatus(), is(ORDER_PROCESSING));
 	}
 
 	@Test
@@ -72,13 +70,12 @@ public class RestoreOrderUseCaseTest {
 		when(repository.findByIdAndStatus(fixture, ORDER_NEW)).thenReturn(Optional.empty());
 
 		//Act
-		final Optional<Order> result = this.sut.execute(fixture);
+		final Order result = this.sut.execute(fixture).orElse(null);
 
 		//Assert
 		verify(repository).findByIdAndStatus(eq(fixture), eq(ORDER_NEW));
-		assertThat(result, notNullValue());
-		assertThat(result.isPresent(), is(Boolean.FALSE));
-
+		assertThat(result, nullValue());
+		
 	}
 
 }

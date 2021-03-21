@@ -27,14 +27,18 @@ public class InvoiceTemplate implements TemplateLoader {
 
 		@Override
 		public void execute(Object result) {
-			final Invoice invoice = (Invoice) result;
 
-			Double total = invoice.getOrder()
-					.getItems().stream()
-					.map(OrderItem::getPrice)
-					.reduce(0d, Double::sum);
+			if (result instanceof Invoice) {
+				final Invoice invoice = (Invoice) result;
 
-			invoice.setTotal(total);
+				final Double total = invoice.getOrder()
+						.getItems().stream()
+						.map(OrderItem::getPrice)
+						.reduce(0d, Double::sum);
+
+				invoice.setTotal(total);
+			}
+
 		}
 	}
 

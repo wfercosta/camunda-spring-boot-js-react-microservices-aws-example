@@ -9,11 +9,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Optional;
-
 import static com.bank.bpm.partners.workers.onboarding.order.OrderStatus.ORDER_NEW;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 @ExtendWith(SpringExtension.class)
@@ -34,11 +31,10 @@ public class OrderRepositoryTest {
 		final Long fixture = 1L;
 
 		//Act
-		final Optional<Order> result = sut.findById(fixture);
+		final Order result = sut.findById(fixture).orElse(null);
 
 		//Asserts
 		assertThat(result, notNullValue());
-		assertThat(result.isPresent(), is(Boolean.TRUE));
 	}
 
 	@Test
@@ -48,10 +44,9 @@ public class OrderRepositoryTest {
 		final Long fixture = 2L;
 
 		//Act
-		final Optional<Order> result = sut.findByIdAndStatus(fixture, ORDER_NEW);
+		final Order result = sut.findByIdAndStatus(fixture, ORDER_NEW).orElse(null);
 
 		//Asserts
 		assertThat(result, notNullValue());
-		assertThat(result.isPresent(), is(Boolean.TRUE));
 	}
 }

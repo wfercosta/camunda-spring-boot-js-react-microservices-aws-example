@@ -21,6 +21,7 @@ public class ReserveItemsInWarehouseExternalTaskTest {
 
 	public static final Void VOID = null;
 	public static final Void VOID_OBJECT_VALUE = VOID;
+	
 	@Mock
 	private ExternalTask externalTask;
 
@@ -31,7 +32,7 @@ public class ReserveItemsInWarehouseExternalTaskTest {
 	private ReserveItemsInWarehouseUseCase useCase;
 
 	private ReserveItemsInWarehouseExternalTask sut;
-	
+
 	private ObjectMapper objectMapper;
 
 	@BeforeAll

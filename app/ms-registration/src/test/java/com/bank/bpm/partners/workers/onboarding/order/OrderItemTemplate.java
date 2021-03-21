@@ -16,7 +16,7 @@ public class OrderItemTemplate implements TemplateLoader {
 	public void load() {
 		Fixture.of(OrderItem.class).addTemplate(BASIC, new Rule() {{
 			add("id", random(Long.class, range(1L, 200L)));
-			add("sku", random(IntStream.range(1, 11).mapToObj(item -> String.format("SKU-%d", item)).toArray()));
+			add("sku", uniqueRandom(IntStream.range(1, 100).mapToObj(item -> String.format("SKU-%d", item)).toArray()));
 			add("price", random(Double.class, range(1d, 200d)));
 			add("quantity", random(Integer.class, range(1, 10)));
 			add("createdAt", LocalDateTime.now());

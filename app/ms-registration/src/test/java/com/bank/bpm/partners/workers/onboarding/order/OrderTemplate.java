@@ -10,6 +10,7 @@ public class OrderTemplate implements TemplateLoader {
 
 	public static final String BASIC = "BASIC";
 	public static final String BASIC_STATE_PROCESSING = "BASIC_STATE_PROCESSING";
+	public static final String BASIC_STATE_PENDING_PAYMENT = "BASIC_STATE_PENDING_PAYMENT";
 
 	@Override
 	public void load() {
@@ -24,6 +25,10 @@ public class OrderTemplate implements TemplateLoader {
 
 		Fixture.of(Order.class).addTemplate(BASIC_STATE_PROCESSING).inherits(BASIC, new Rule() {{
 			add("status", OrderStatus.ORDER_PROCESSING);
+		}});
+
+		Fixture.of(Order.class).addTemplate(BASIC_STATE_PENDING_PAYMENT).inherits(BASIC, new Rule() {{
+			add("status", OrderStatus.ORDER_PENDING_PAYMENT);
 		}});
 
 	}

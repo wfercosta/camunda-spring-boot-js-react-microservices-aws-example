@@ -17,7 +17,7 @@ public class ProductTemplate implements TemplateLoader {
 	public void load() {
 		Fixture.of(Product.class).addTemplate(BASIC, new Rule() {{
 			add("id", random(Long.class, range(1L, 100L)));
-			add("sku", random(IntStream.range(1, 11).mapToObj(item -> String.format("SKU-%d", item)).toArray()));
+			add("sku", uniqueRandom(IntStream.range(1, 100).mapToObj(item -> String.format("SKU-%d", item)).toArray()));
 			add("amount", random(Integer.class, range(100, 1000)));
 			add("dispatchable", Boolean.TRUE);
 			add("createdAt", LocalDateTime.now());

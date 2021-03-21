@@ -1,43 +1,36 @@
 package com.bank.bpm.partners.workers.onboarding.order;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@ToString
-@Data
-@EqualsAndHashCode
 @Entity
-@Table(name = "purchase_order_item")
-public class OrderItem {
+@Table(name = "products")
+@Data
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "purchase_order_item_seq")
-	@SequenceGenerator(name = "purchase_order_item_seq", sequenceName = "purchase_order_item_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
+	@SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
 	private Long id;
 
 	private String sku;
 
-	private Double price;
+	private int amount;
 
-	private int quantity;
-
-	@ManyToOne
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	@JsonBackReference
-	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
-	private Order order;
+	@Column(name = "is_dispatchable")
+	private boolean dispatchable;
 
 	@CreatedDate
 	@EqualsAndHashCode.Exclude
@@ -45,9 +38,11 @@ public class OrderItem {
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime createdAt;
 
-	@LastModifiedDate
+	@LastModifiedBy
 	@EqualsAndHashCode.Exclude
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime updatedAt;
+
+
 }

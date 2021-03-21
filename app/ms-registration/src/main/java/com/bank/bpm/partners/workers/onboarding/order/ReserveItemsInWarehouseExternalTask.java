@@ -7,8 +7,6 @@ import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
 
-import java.util.Map;
-
 @ExternalTaskController(topic = "order_reserve_items")
 public class ReserveItemsInWarehouseExternalTask implements ExternalTaskHandler {
 
@@ -27,9 +25,9 @@ public class ReserveItemsInWarehouseExternalTask implements ExternalTaskHandler 
 		final String jsonOrder = externalTask.getVariable("order");
 		final Order order = objectMapper.readValue(jsonOrder, Order.class);
 
-		Boolean result = useCase.execute(order);
+		useCase.execute(order);
 
-		externalTaskService.complete(externalTask, Map.of("is_items_reserved", result));
+		externalTaskService.complete(externalTask);
 	}
 
 }

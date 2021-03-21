@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -57,7 +56,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 	public void Should_restore_order_as_dispatchable_When_the_product_is_not_virtual() throws JsonProcessingException {
 
 		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.STATE_PROCESSING_DISPATCHABLE_PRODUCT);
+		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.BASIC_STATE_PROCESSING);
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
@@ -69,8 +68,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 		verify(externalTaskService).complete(eq(externalTask), variablesCaptor.capture());
 
 		Map<String, Object> captured = variablesCaptor.getValue();
-
-		assertThat(captured, hasEntry("has_dispatchable", Boolean.TRUE));
+		
 		assertThat(captured, hasKey("order"));
 
 	}
@@ -80,7 +78,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 	public void Should_restore_order_as_non_dispatchable_When_the_product_is_virtual() throws JsonProcessingException {
 
 		//Arrange
-		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.STATE_PROCESSING_NON_DISPATCHABLE_PRODUCT);
+		Order fixture = Fixture.from(Order.class).gimme(OrderTemplate.BASIC_STATE_PROCESSING);
 		when(externalTask.getVariable("order_id")).thenReturn(fixture.getId());
 		when(useCase.execute(fixture.getId())).thenReturn(Optional.of(fixture));
 
@@ -93,7 +91,6 @@ public class RestoreOrderForProcessingExternalTaskTest {
 
 		Map<String, Object> captured = variablesCaptor.getValue();
 
-		assertThat(captured, hasEntry("has_dispatchable", Boolean.FALSE));
 		assertThat(captured, hasKey("order"));
 
 	}

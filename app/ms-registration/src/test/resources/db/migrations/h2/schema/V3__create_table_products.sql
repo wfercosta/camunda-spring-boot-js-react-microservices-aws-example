@@ -1,13 +1,14 @@
-CREATE TABLE purchase_orders (
+CREATE TABLE products (
   id INT NOT NULL,
-  status VARCHAR(20) NOT NULL,
-  customer_id INT NOT NULL,
+  sku VARCHAR(60) NOT NULL,
+  is_dispatchable BOOLEAN NOT NULL,
+  amount INT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id)
 );
 
-CREATE SEQUENCE purchase_order_seq
+CREATE SEQUENCE products_seq
   START WITH 1
   INCREMENT BY 1
   MINVALUE 1;

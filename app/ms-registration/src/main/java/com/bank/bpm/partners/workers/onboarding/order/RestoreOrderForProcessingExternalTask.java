@@ -30,13 +30,7 @@ public class RestoreOrderForProcessingExternalTask implements ExternalTaskHandle
 				.orElseThrow(() -> OrderNotFoundException.from(id));
 
 		externalTaskService
-				.complete(externalTask,
-						Map.of("has_dispatchable", hasDispatchable(order),
-								"order", this.objectMapper.writeValueAsString(order)));
-	}
-
-	private Boolean hasDispatchable(Order order) {
-		return order.getItems().stream().noneMatch(OrderItem::isVirtual);
+				.complete(externalTask, Map.of("order", this.objectMapper.writeValueAsString(order)));
 	}
 
 }

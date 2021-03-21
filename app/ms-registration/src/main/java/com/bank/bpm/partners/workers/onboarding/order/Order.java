@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "purchase_order")
+@Table(name = "purchase_orders")
 public class Order {
 
 	@Id

@@ -6,30 +6,41 @@ import lombok.SneakyThrows;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Optional;
 
-@ExternalTaskController(topic = "order_request_payment")
+@ExternalTaskController(topic = "order_payment_request")
 public class RequestPaymentExternalTask implements ExternalTaskHandler {
-	private final ObjectMapper objectMapper;
-	private final RequestPaymentExternalUseCase useCase;
 
-	public RequestPaymentExternalTask(final ObjectMapper objectMapper, final RequestPaymentExternalUseCase useCase) {
-		this.objectMapper = objectMapper;
-		this.useCase = useCase;
-	}
+    private static final Logger LOG = LoggerFactory.getLogger(RequestPaymentExternalTask.class);
 
-	@SneakyThrows
-	@Override
-	public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+    private final ObjectMapper objectMapper;
+    private final RequestPaymentExternalUseCase useCase;
 
-		final String jsonOder = externalTask.getVariable("order");
-		final Order order = objectMapper.readValue(jsonOder, Order.class);
+    public RequestPaymentExternalTask(final ObjectMapper objectMapper, final RequestPaymentExternalUseCase useCase) {
+        this.objectMapper = objectMapper;
+        this.useCase = useCase;
+    }
 
-		Optional<String> optional = useCase.execute(order);
+    @SneakyThrows
+    @Override
+    public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 
-		externalTaskService.complete(externalTask, Map.of("payment_correlation_id", optional.get()));
+        LOG.info("{} - Start", this.getClass().getName());
 
-	}
+        final String jsonOder = externalTask.getVariable("order");
+        final Order order = objectMapper.readValue(jsonOder, Order.class);
+
+        Optional<String> optional = useCase.execute(order);
+
+        final String correlation = optional.get();
+
+        externalTaskService.complete(externalTask, Map.of("payment_correlation_id", correlation));
+
+        LOG.info("{} - Finish", this.getClass().getName());
+
+    }
 }

@@ -6,28 +6,36 @@ import lombok.SneakyThrows;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@ExternalTaskController(topic = "order_reserve_items")
+@ExternalTaskController(topic = "order_items_reserve")
 public class ReserveItemsInWarehouseExternalTask implements ExternalTaskHandler {
 
-	private ObjectMapper objectMapper;
-	private ReserveItemsInWarehouseUseCase useCase;
+    private static final Logger LOG = LoggerFactory.getLogger(ReserveItemsInWarehouseExternalTask.class);
 
-	public ReserveItemsInWarehouseExternalTask(final ObjectMapper objectMapper, final ReserveItemsInWarehouseUseCase useCase) {
-		this.objectMapper = objectMapper;
-		this.useCase = useCase;
-	}
+    private ObjectMapper objectMapper;
+    private ReserveItemsInWarehouseUseCase useCase;
 
-	@Override
-	@SneakyThrows
-	public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+    public ReserveItemsInWarehouseExternalTask(final ObjectMapper objectMapper, final ReserveItemsInWarehouseUseCase useCase) {
+        this.objectMapper = objectMapper;
+        this.useCase = useCase;
+    }
 
-		final String jsonOrder = externalTask.getVariable("order");
-		final Order order = objectMapper.readValue(jsonOrder, Order.class);
+    @Override
+    @SneakyThrows
+    public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 
-		useCase.execute(order);
+        LOG.info("{} - Start", this.getClass().getName());
 
-		externalTaskService.complete(externalTask);
-	}
+        final String jsonOrder = externalTask.getVariable("order");
+        final Order order = objectMapper.readValue(jsonOrder, Order.class);
+
+        useCase.execute(order);
+
+        externalTaskService.complete(externalTask);
+
+        LOG.info("{} - Finish", this.getClass().getName());
+    }
 
 }

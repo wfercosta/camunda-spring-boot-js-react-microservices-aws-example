@@ -4,7 +4,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate.ddl-auto: none
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
@@ -28,3 +28,7 @@ itau:
         lock-duration: 30s
         async-timeout: 2s
         max-retries: 1
+
+feign:
+  payment-api:
+    base-url: http://localhost:9000

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/v1/payments/payment"
+  },
+  "response": {
+    "status": 201,
+    "body": "{ \"correlationId\": \"674e0b0a-8b58-11eb-8dcd-0242ac130003\"}",
+    "headers": {
+        "Content-Type": "application/json"
+    }
+  }
+}

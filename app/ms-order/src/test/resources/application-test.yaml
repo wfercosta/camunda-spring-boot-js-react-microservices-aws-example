@@ -9,3 +9,9 @@ spring:
 
   flyway:
     locations: classpath:db/migrations/schema
+
+
+
+feign:
+  payment-api:
+    base-url: http://localhost:9561

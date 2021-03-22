@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0e1ym0f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
-  <bpmn:process id="Process_0blg2ml" isExecutable="true">
-    <bpmn:sequenceFlow id="Flow_0ndsyd4" sourceRef="StartEvent_1" targetRef="Activity_1wr3bab" />
-    <bpmn:sequenceFlow id="Flow_0v653ac" sourceRef="Activity_1wr3bab" targetRef="Gateway_1leguyi" />
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0e1ym0f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="dojo" name="dojo" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_0ndsyd4" sourceRef="StartEvent_1" targetRef="order_restore" />
+    <bpmn:sequenceFlow id="Flow_0v653ac" sourceRef="order_restore" targetRef="Gateway_1leguyi" />
     <bpmn:inclusiveGateway id="Gateway_1leguyi">
       <bpmn:incoming>Flow_0v653ac</bpmn:incoming>
       <bpmn:outgoing>Flow_0oyebn3</bpmn:outgoing>
       <bpmn:outgoing>Flow_03yze3d</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0oyebn3" name="has dispatchable" sourceRef="Gateway_1leguyi" targetRef="Activity_0doidkx" />
-    <bpmn:sequenceFlow id="Flow_03yze3d" name="process payment" sourceRef="Gateway_1leguyi" targetRef="Activity_16ckyf8" />
-    <bpmn:sequenceFlow id="Flow_1waj29i" sourceRef="Activity_0doidkx" targetRef="Gateway_0r52ajz" />
+    <bpmn:sequenceFlow id="Flow_0oyebn3" name="has dispatchable" sourceRef="Gateway_1leguyi" targetRef="order_items_reserve" />
+    <bpmn:sequenceFlow id="Flow_03yze3d" name="process payment" sourceRef="Gateway_1leguyi" targetRef="order_payment_request" />
+    <bpmn:sequenceFlow id="Flow_1waj29i" sourceRef="order_items_reserve" targetRef="Gateway_0r52ajz" />
     <bpmn:inclusiveGateway id="Gateway_0r52ajz">
       <bpmn:incoming>Flow_1waj29i</bpmn:incoming>
       <bpmn:incoming>Flow_0vfhgsl</bpmn:incoming>
       <bpmn:outgoing>Flow_0lbmh8k</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0lbmh8k" sourceRef="Gateway_0r52ajz" targetRef="Activity_0f3qy7r" />
-    <bpmn:receiveTask id="Activity_0f3qy7r" name="Wait for payment confirmation">
+    <bpmn:sequenceFlow id="Flow_0lbmh8k" sourceRef="Gateway_0r52ajz" targetRef="order_payment_confirmation" />
+    <bpmn:receiveTask id="order_payment_confirmation" name="Wait for payment confirmation" messageRef="Message_0zqp1u0">
       <bpmn:incoming>Flow_0lbmh8k</bpmn:incoming>
       <bpmn:outgoing>Flow_1kyvx4q</bpmn:outgoing>
     </bpmn:receiveTask>
-    <bpmn:boundaryEvent id="Event_0a4pwut" name="2 min" attachedToRef="Activity_0f3qy7r">
+    <bpmn:boundaryEvent id="Event_0a4pwut" name="2 min" attachedToRef="order_payment_confirmation">
       <bpmn:outgoing>Flow_0odmw0o</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1htgpik" />
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1htgpik">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="Event_0m40xro" attachedToRef="Activity_0doidkx">
+    <bpmn:boundaryEvent id="Event_0m40xro" attachedToRef="order_items_reserve">
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_1af8lim" />
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="Event_0icgyrj" attachedToRef="Activity_16ckyf8">
+    <bpmn:boundaryEvent id="Event_0icgyrj" attachedToRef="order_payment_request">
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_18jqjbg" />
     </bpmn:boundaryEvent>
-    <bpmn:serviceTask id="Activity_1wr3bab" name="Restore order for processing">
+    <bpmn:serviceTask id="order_restore" name="Restore order for processing" camunda:type="external" camunda:topic="order_restore">
       <bpmn:incoming>Flow_0ndsyd4</bpmn:incoming>
       <bpmn:outgoing>Flow_0v653ac</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_1kyvx4q" sourceRef="Activity_0f3qy7r" targetRef="Activity_06fo6vd" />
-    <bpmn:serviceTask id="Activity_05w27v3" name="Refund Payment" isForCompensation="true" />
-    <bpmn:serviceTask id="Activity_16ckyf8" name="Request Payment">
+    <bpmn:sequenceFlow id="Flow_1kyvx4q" sourceRef="order_payment_confirmation" targetRef="order_invoice_process" />
+    <bpmn:serviceTask id="order_payment_refund" name="Refund Payment" isForCompensation="true" camunda:type="external" camunda:topic="order_payment_refund" />
+    <bpmn:serviceTask id="order_payment_request" name="Request Payment" camunda:type="external" camunda:topic="order_payment_request">
       <bpmn:incoming>Flow_03yze3d</bpmn:incoming>
       <bpmn:outgoing>Flow_0vfhgsl</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0doidkx" name="Reserve in warehouse">
+    <bpmn:serviceTask id="order_items_reserve" name="Reserve in warehouse" camunda:type="external" camunda:topic="order_items_reserve">
       <bpmn:incoming>Flow_0oyebn3</bpmn:incoming>
       <bpmn:outgoing>Flow_1waj29i</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0rgx0ru" name="Release order items" isForCompensation="true" />
-    <bpmn:endEvent id="Event_0gykqs0" name="Order Invoiced">
+    <bpmn:serviceTask id="order_items_release" name="Release order items" isForCompensation="true" camunda:type="external" camunda:topic="order_items_release" />
+    <bpmn:endEvent id="order_invoiced" name="Order Invoiced">
       <bpmn:incoming>Flow_0ygendt</bpmn:incoming>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1ra594o" />
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1ra594o" signalRef="Signal_172bei8" />
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0ygendt" sourceRef="Activity_06fo6vd" targetRef="Event_0gykqs0" />
-    <bpmn:serviceTask id="Activity_06fo6vd" name="Process Invoice">
+    <bpmn:sequenceFlow id="Flow_0ygendt" sourceRef="order_invoice_process" targetRef="order_invoiced" />
+    <bpmn:serviceTask id="order_invoice_process" name="Process Invoice" camunda:type="external" camunda:topic="order_invoice_process">
       <bpmn:incoming>Flow_1kyvx4q</bpmn:incoming>
       <bpmn:outgoing>Flow_0ygendt</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0odmw0o" sourceRef="Event_0a4pwut" targetRef="Event_1pgtw01" />
-    <bpmn:sequenceFlow id="Flow_0z55e5x" sourceRef="Event_1pgtw01" targetRef="Event_1d5j3hn" />
+    <bpmn:sequenceFlow id="Flow_0z55e5x" sourceRef="Event_1pgtw01" targetRef="order_refunded" />
     <bpmn:intermediateThrowEvent id="Event_1pgtw01" name="Revert Order Processing">
       <bpmn:incoming>Flow_0odmw0o</bpmn:incoming>
       <bpmn:outgoing>Flow_0z55e5x</bpmn:outgoing>
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_0w9hm5f" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:endEvent id="Event_1d5j3hn" name="Order Refunded">
+    <bpmn:endEvent id="order_refunded" name="Order Refunded">
       <bpmn:incoming>Flow_0z55e5x</bpmn:incoming>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1tdu22a" />
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1tdu22a" signalRef="Signal_1ycrpau" />
     </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0vfhgsl" sourceRef="order_payment_request" targetRef="Gateway_0r52ajz" />
     <bpmn:startEvent id="StartEvent_1" name="Order new">
       <bpmn:outgoing>Flow_0ndsyd4</bpmn:outgoing>
-      <bpmn:signalEventDefinition id="SignalEventDefinition_1egefew" />
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0vfhgsl" sourceRef="Activity_16ckyf8" targetRef="Gateway_0r52ajz" />
-    <bpmn:association id="Association_0h16u01" associationDirection="One" sourceRef="Event_0m40xro" targetRef="Activity_0rgx0ru" />
-    <bpmn:association id="Association_023g5xq" associationDirection="One" sourceRef="Event_0icgyrj" targetRef="Activity_05w27v3" />
+    <bpmn:association id="Association_0h16u01" associationDirection="One" sourceRef="Event_0m40xro" targetRef="order_items_release" />
+    <bpmn:association id="Association_023g5xq" associationDirection="One" sourceRef="Event_0icgyrj" targetRef="order_payment_refund" />
   </bpmn:process>
+  <bpmn:message id="Message_0zqp1u0" name="order_payment_confirmation" />
+  <bpmn:signal id="Signal_1ycrpau" name="order_refunded" />
+  <bpmn:signal id="Signal_172bei8" name="order_invoiced" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0blg2ml">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="dojo">
       <bpmndi:BPMNEdge id="Flow_0v653ac_di" bpmnElement="Flow_0v653ac">
         <di:waypoint x="390" y="397" />
         <di:waypoint x="495" y="397" />
@@ -132,28 +136,28 @@
       <bpmndi:BPMNShape id="Gateway_0m0qpuj_di" bpmnElement="Gateway_1leguyi">
         <dc:Bounds x="495" y="372" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0wucyvj_di" bpmnElement="Activity_05w27v3">
+      <bpmndi:BPMNShape id="Activity_0wucyvj_di" bpmnElement="order_payment_refund">
         <dc:Bounds x="820" y="480" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0y6v3bc_di" bpmnElement="Activity_16ckyf8">
+      <bpmndi:BPMNShape id="Activity_0y6v3bc_di" bpmnElement="order_payment_request">
         <dc:Bounds x="700" y="357" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1yrgqgh_di" bpmnElement="Activity_0doidkx">
+      <bpmndi:BPMNShape id="Activity_1yrgqgh_di" bpmnElement="order_items_reserve">
         <dc:Bounds x="700" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_07p9x7z_di" bpmnElement="Activity_0rgx0ru">
+      <bpmndi:BPMNShape id="Activity_07p9x7z_di" bpmnElement="order_items_release">
         <dc:Bounds x="820" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_18tq703_di" bpmnElement="Gateway_0r52ajz">
         <dc:Bounds x="975" y="372" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1nzhoot_di" bpmnElement="Activity_0f3qy7r">
+      <bpmndi:BPMNShape id="Activity_1nzhoot_di" bpmnElement="order_payment_confirmation">
         <dc:Bounds x="1120" y="357" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05f8h3h_di" bpmnElement="Activity_06fo6vd">
+      <bpmndi:BPMNShape id="Activity_05f8h3h_di" bpmnElement="order_invoice_process">
         <dc:Bounds x="1340" y="357" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0tw1si6_di" bpmnElement="Event_0gykqs0">
+      <bpmndi:BPMNShape id="Event_0tw1si6_di" bpmnElement="order_invoiced">
         <dc:Bounds x="1537" y="379" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1519" y="422" width="73" height="14" />
@@ -165,16 +169,16 @@
           <dc:Bounds x="1358" y="265" width="64" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_09w94ew_di" bpmnElement="Event_1d5j3hn">
+      <bpmndi:BPMNShape id="Event_09w94ew_di" bpmnElement="order_refunded">
         <dc:Bounds x="1537" y="222" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1516" y="265" width="79" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1jkwoit_di" bpmnElement="Activity_1wr3bab">
+      <bpmndi:BPMNShape id="Activity_1jkwoit_di" bpmnElement="order_restore">
         <dc:Bounds x="290" y="357" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0uagkgj_di" bpmnElement="StartEvent_1">
+      <bpmndi:BPMNShape id="Event_0iqbsgs_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="162" y="379" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="155" y="422" width="52" height="14" />

@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 public class RestoreOrderUseCaseTest {
 
-	private RestoreOderUseCase sut;
+	private RestoreOrderUseCase sut;
 
 	@Mock
 	private OrderRepository repository;
@@ -36,7 +36,7 @@ public class RestoreOrderUseCaseTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		sut = new RestoreOderUseCase(repository);
+		sut = new RestoreOrderUseCase(repository);
 	}
 
 	@Test
@@ -75,7 +75,7 @@ public class RestoreOrderUseCaseTest {
 		//Assert
 		verify(repository).findByIdAndStatus(eq(fixture), eq(ORDER_NEW));
 		assertThat(result, nullValue());
-		
+
 	}
 
 }

@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class RequestPaymentExternalUseCaseTest {
 
 	@Mock
-	private RestPaymentClient client;
+	private PaymentApiClient client;
 
 	@Mock
 	private OrderRepository repository;

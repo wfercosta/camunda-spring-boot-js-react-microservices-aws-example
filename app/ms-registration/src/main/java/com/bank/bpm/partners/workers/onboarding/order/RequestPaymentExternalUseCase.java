@@ -6,10 +6,10 @@ import java.util.Optional;
 
 @Component
 public class RequestPaymentExternalUseCase implements UseCase<Optional<String>, Order> {
-	private final RestPaymentClient client;
+	private final PaymentApiClient client;
 	private final OrderRepository repository;
 
-	public RequestPaymentExternalUseCase(final RestPaymentClient client, final OrderRepository repository) {
+	public RequestPaymentExternalUseCase(final PaymentApiClient client, final OrderRepository repository) {
 		this.client = client;
 		this.repository = repository;
 	}

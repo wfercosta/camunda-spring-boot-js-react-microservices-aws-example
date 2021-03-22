@@ -36,7 +36,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 	private ExternalTaskService externalTaskService;
 
 	@Mock
-	private RestoreOderUseCase useCase;
+	private RestoreOrderUseCase useCase;
 
 	@Captor
 	private ArgumentCaptor<Map<String, Object>> variablesCaptor;
@@ -68,7 +68,7 @@ public class RestoreOrderForProcessingExternalTaskTest {
 		verify(externalTaskService).complete(eq(externalTask), variablesCaptor.capture());
 
 		Map<String, Object> captured = variablesCaptor.getValue();
-		
+
 		assertThat(captured, hasKey("order"));
 
 	}

@@ -13,9 +13,9 @@ import java.util.Map;
 public class RestoreOrderForProcessingExternalTask implements ExternalTaskHandler {
 
 	private final ObjectMapper objectMapper;
-	private final RestoreOderUseCase useCase;
+	private final RestoreOrderUseCase useCase;
 
-	public RestoreOrderForProcessingExternalTask(final ObjectMapper objectMapper, final RestoreOderUseCase useCase) {
+	public RestoreOrderForProcessingExternalTask(final ObjectMapper objectMapper, final RestoreOrderUseCase useCase) {
 		this.objectMapper = objectMapper;
 		this.useCase = useCase;
 	}

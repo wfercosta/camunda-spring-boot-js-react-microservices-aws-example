@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class RestoreOderUseCase implements UseCase<Optional<Order>, Long> {
+public class RestoreOrderUseCase implements UseCase<Optional<Order>, Long> {
 
 	private final OrderRepository repository;
 
-	public RestoreOderUseCase(final OrderRepository repository) {
+	public RestoreOrderUseCase(final OrderRepository repository) {
 		this.repository = repository;
 	}
 

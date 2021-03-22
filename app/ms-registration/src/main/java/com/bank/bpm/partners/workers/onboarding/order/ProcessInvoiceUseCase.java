@@ -1,7 +1,10 @@
 package com.bank.bpm.partners.workers.onboarding.order;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Optional;
 
+@Component
 public class ProcessInvoiceUseCase implements UseCase<Optional<Invoice>, Order> {
 
 	private InvoiceRepository invoiceRepository;
@@ -14,7 +17,7 @@ public class ProcessInvoiceUseCase implements UseCase<Optional<Invoice>, Order> 
 
 	@Override
 	public Optional<Invoice> execute(Order in) {
-		
+
 		Optional<Order> optional = orderRepository.findByIdAndStatus(in.getId(), OrderStatus.ORDER_PENDING_PAYMENT);
 
 		if (optional.isPresent()) {

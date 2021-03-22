@@ -17,14 +17,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.when;
 		initializers = {WireMockInitializer.class},
 		classes = {TestApplication.class}
 )
-public class ReserveItemsInWarehouseExternalTaskComponentTest {
+public class ProcessInvoiceExternalTaskComponentTest {
 
 	@Mock
 	private ExternalTask externalTask;
@@ -51,35 +51,34 @@ public class ReserveItemsInWarehouseExternalTaskComponentTest {
 	private ObjectMapper objectMapper;
 
 	@Autowired
-	private ReserveItemsInWarehouseExternalTask sut;
+	private ProcessInvoiceExternalTask sut;
 
 	@Autowired
 	private OrderRepository orderRepository;
 
-	@Autowired
-	private ProductRepository productRepository;
-
 	@Test
-	@DisplayName("Should reserve items in warehouse When order is valid and with status processing")
-	public void Should_reserve_items_warehouse_When_order_valid_and_with_status_processing() throws JsonProcessingException {
+	@DisplayName("Should return invoiced created and status as invoiced")
+	public void Should_return_invoiced_created_and_status_invoiced() throws JsonProcessingException {
 
 		//Arrange
-		final Order order = orderRepository.findById(5L).orElse(null);
-		final List<String> skus = requireNonNull(order).getItems()
-				.stream().map(OrderItem::getSku)
-				.collect(Collectors.toList());
+		final Order order = orderRepository.findById(6L).orElse(null);
 
-		when(externalTask.getVariable("order")).thenReturn(objectMapper.writeValueAsString(order));
+		when(externalTask.getVariable("order"))
+				.thenReturn(objectMapper.writeValueAsString(requireNonNull(order)));
 
 		//Act
 		sut.execute(externalTask, externalTaskService);
 
-		//Asserts
-		final List<Product> products = productRepository.findAllBySkuInAndDispatchableTrue(skus);
-		final List<Integer> amounts = products.stream().map(Product::getAmount).collect(Collectors.toList());
+		//Assertions
+		verify(externalTaskService).complete(eq(externalTask), variablesCapture.capture());
 
-		assertThat(amounts, is(Arrays.asList(499, 499)));
+		final Map<String, Object> captured = variablesCapture.getValue();
 
+		assertThat(captured, hasKey("invoice"));
+		assertThat(captured, hasKey("order"));
+
+		final Order updated = objectMapper.readValue((String) captured.get("order"), Order.class);
+
+		assertThat(updated.getStatus(), is(OrderStatus.ORDER_INVOICED));
 	}
-
 }

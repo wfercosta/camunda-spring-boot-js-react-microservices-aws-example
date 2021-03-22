@@ -19,6 +19,11 @@ INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (7,
 INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (8, 4, 'MICRO-XBOX-BLACK-SERIESX', 10.0, 1);
 
 
+INSERT INTO purchase_orders (id, status, customer_id) VALUES (5, 'ORDER_PROCESSING', 1);
+INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (9, 5, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 10.0, 1);
+INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (10, 5, 'MICRO-XBOX-BLACK-SERIESX', 10.0, 1);
+
+
 INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (1, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 500, 1);
 INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (2, 'MICRO-XBOX-BLACK-SERIESX', 500, 1);
 

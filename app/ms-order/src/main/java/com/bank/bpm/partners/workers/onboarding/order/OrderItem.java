@@ -23,33 +23,32 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class OrderItem {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "purchase_order_item_seq")
-	@SequenceGenerator(name = "purchase_order_item_seq", sequenceName = "purchase_order_item_seq", allocationSize = 1)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String sku;
+    private String sku;
 
-	private Double price;
+    private Double price;
 
-	private int quantity;
+    private int quantity;
 
-	@ManyToOne
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	@JsonBackReference("order-items")
-	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
-	private Order order;
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    @JsonBackReference("order-items")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Order order;
 
-	@CreatedDate
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime createdAt;
+    @CreatedDate
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createdAt;
 
-	@LastModifiedDate
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime updatedAt;
+    @LastModifiedDate
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime updatedAt;
 }

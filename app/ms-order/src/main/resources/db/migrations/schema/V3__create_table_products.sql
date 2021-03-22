@@ -1,5 +1,5 @@
 CREATE TABLE products (
-  id INT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
   sku VARCHAR(60) NOT NULL,
   is_dispatchable BOOLEAN NOT NULL,
   amount INT NOT NULL,
@@ -7,8 +7,3 @@ CREATE TABLE products (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id)
 );
-
-CREATE SEQUENCE products_seq
-  START WITH 1
-  INCREMENT BY 1
-  MINVALUE 1;

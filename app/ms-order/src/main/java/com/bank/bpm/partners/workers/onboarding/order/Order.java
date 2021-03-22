@@ -25,31 +25,30 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class Order {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "purchase_order_seq")
-	@SequenceGenerator(name = "purchase_order_seq", sequenceName = "purchase_order_seq", allocationSize = 1)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@EqualsAndHashCode.Exclude
-	@JsonManagedReference("order-items")
-	@OneToMany(mappedBy = "order")
-	private List<OrderItem> items;
+    @EqualsAndHashCode.Exclude
+    @JsonManagedReference("order-items")
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> items;
 
-	@EqualsAndHashCode.Exclude
-	@JsonManagedReference("order-invoice")
-	@OneToOne(mappedBy = "order")
-	private Invoice invoice;
+    @EqualsAndHashCode.Exclude
+    @JsonManagedReference("order-invoice")
+    @OneToOne(mappedBy = "order")
+    private Invoice invoice;
 
-	@Enumerated(EnumType.STRING)
-	private OrderStatus status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
-	@CreatedDate
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime createdAt;
+    @CreatedDate
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createdAt;
 
-	@LastModifiedDate
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime updatedAt;
+    @LastModifiedDate
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime updatedAt;
 }

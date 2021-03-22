@@ -22,29 +22,28 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class Product {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
-	@SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String sku;
+    private String sku;
 
-	private int amount;
+    private int amount;
 
-	@Column(name = "is_dispatchable")
-	private boolean dispatchable;
+    @Column(name = "is_dispatchable")
+    private boolean dispatchable;
 
-	@CreatedDate
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime createdAt;
+    @CreatedDate
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createdAt;
 
-	@LastModifiedBy
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime updatedAt;
+    @LastModifiedBy
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime updatedAt;
 
 
 }

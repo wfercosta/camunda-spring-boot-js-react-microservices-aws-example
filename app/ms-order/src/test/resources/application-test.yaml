@@ -1,13 +1,6 @@
 spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    hibernate.ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        enable_lazy_load_no_trans: true
-
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -15,5 +8,4 @@ spring:
     password: password
 
   flyway:
-    enabled: true
-    locations: classpath:db/migrations/h2/schema
+    locations: classpath:db/migrations/schema

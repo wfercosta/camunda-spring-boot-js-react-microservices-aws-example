@@ -1,13 +1,8 @@
 CREATE TABLE purchase_orders (
-  id INT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
   status VARCHAR(40) NOT NULL,
   customer_id INT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id)
 );
-
-CREATE SEQUENCE purchase_order_seq
-  START WITH 1
-  INCREMENT BY 1
-  MINVALUE 1;

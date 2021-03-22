@@ -1,5 +1,5 @@
 CREATE TABLE purchase_order_items (
-  id INT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
   order_id INT NOT NULL,
   sku VARCHAR(60) NOT NULL,
   price DOUBLE NOT NULL,
@@ -10,7 +10,3 @@ CREATE TABLE purchase_order_items (
   FOREIGN KEY (order_id) REFERENCES purchase_orders(id)
 );
 
-CREATE SEQUENCE purchase_order_item_seq
-  START WITH 1
-  INCREMENT BY 1
-  MINVALUE 1;

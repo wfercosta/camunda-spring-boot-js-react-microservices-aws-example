@@ -23,31 +23,30 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class Invoice {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invoices_seq")
-	@SequenceGenerator(name = "invoices_seq", sequenceName = "invoices_seq", allocationSize = 1)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private Double total;
+    private Double total;
 
-	@EqualsAndHashCode.Exclude
-	@JsonBackReference("order-invoice")
-	@OneToOne
-	@JoinColumn(name = "order_id", referencedColumnName = "id")
-	private Order order;
+    @EqualsAndHashCode.Exclude
+    @JsonBackReference("order-invoice")
+    @OneToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
 
-	@CreatedDate
-	@Column(name = "created_at", nullable = false, updatable = false)
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime createdAt;
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createdAt;
 
-	@LastModifiedDate
-	@Column(name = "updated_at", nullable = false)
-	@EqualsAndHashCode.Exclude
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-	private LocalDateTime updatedAt;
+    @LastModifiedDate
+    @Column(name = "updated_at", nullable = false)
+    @EqualsAndHashCode.Exclude
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime updatedAt;
 
 }

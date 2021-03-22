@@ -6,6 +6,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        enable_lazy_load_no_trans: true
 
   datasource:
     url: jdbc:h2:mem:testdb

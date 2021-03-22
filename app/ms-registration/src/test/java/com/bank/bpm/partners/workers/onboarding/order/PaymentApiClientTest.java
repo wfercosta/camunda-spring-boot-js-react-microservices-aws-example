@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @ActiveProfiles("test")
 @ContextConfiguration(
 		initializers = {WireMockInitializer.class},
-		classes = {IntegrationTestRestClientsApplication.class}
+		classes = {TestApplication.class}
 )
 public class PaymentApiClientTest {
 

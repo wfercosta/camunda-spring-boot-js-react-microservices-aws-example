@@ -27,7 +27,7 @@ In the next table you will find a simple view about de confiugration applyed to 
 
 
 
-## How to start Wiremock for local testing
+## How to use this project
 
 ```
 $ cd /app/wiremock
@@ -63,3 +63,7 @@ curl --request POST \
   "resultEnabled" : true
 }'
 ```
+
+## License
+
+This project is under the MIT license. See the [LICENSE](./LICENSE) for more information.

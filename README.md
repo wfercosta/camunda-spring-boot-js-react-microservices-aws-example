@@ -1,4 +1,5 @@
-# Camunda and automation test dojo
+# Dojo: Camunda and test automation
+This material was build in order to illustrate how Camunda BPM works and how to implement unit, integration and component tests with Spring Boot.
 ## About the business process
 
 This is a sample process about Puchase Order processing that is fired as soon as it is received to process the payment and items reservation in Warehouse before the shipping.

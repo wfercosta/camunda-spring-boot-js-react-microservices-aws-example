@@ -31,32 +31,32 @@ TBD
 
 ## How to use this project
 
-Start the docker compose file in order to run the databases used by the applications in this project.
+Start the __docker compose__ file in order to run the __databases__ used by the applications in this project.
 ```
 $ cd ${PROJECT_ROOT}
 $ docker-compose up -d
 ```
 
-Start Wiremock in order to simulate a external service for submiting a payment request.
+Start __Wiremock__ in order to simulate a external service for submiting a payment request.
 ```
 $ cd ${PROJECT_ROOT}/app/wiremock
 $ java -jar wiremock-standalone-2.27.2.jar --port 9000 --verbose
 ```
 
-Start the camunda process server
+Start the __camunda process server (ms-process-server)__
 ```
 $ cd ${PROJECT_ROOT}/app/ms-process-server
 $ ./mvnw spring-boot:run
 ```
 
-Start the purchase order service
+Start the __purchase order service (ms-order)__
 ```
 $ cd ${PROJECT_ROOT}/app/ms-order
 $ ./mvnw test
 $ ./mvnw spring-boot:run
 ```
 
-Connect to MySQL database used by ms-order, in order to create some test data.
+Connect to MySQL database used by __purchase order service (ms-order)__, in order to create some test data.
 ```
 -- INSERT PRODUCTS
 INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (1, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 500, 1);

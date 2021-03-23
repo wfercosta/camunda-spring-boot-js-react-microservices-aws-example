@@ -65,7 +65,14 @@ INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (2, 'MICRO-XBOX-B
 -- INSERT AN ORDER ON THE INITIAL STATE
 INSERT INTO purchase_orders (id, status, customer_id) VALUES (1, 'ORDER_NEW', 1);
 INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (1, 1, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 10.0, 1);
-INSERT INTO purchase_order_items (id, ord
+INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (2, 1, 'MICRO-XBOX-BLACK-SERIESX', 10.0, 1);
+
+-- CLEANUP TABLES
+DELETE FROM invoices;
+DELETE FROM purchase_order_items;
+DELETE FROM purchase_orders;
+DELETE FROM products;
+
 ```
 
 Connect to Camunda BPM, on ```http://localhost:8080```, using de user and password ```demo``` and deploy the process available on ```${PROJECT_ROOT}/bpm```.

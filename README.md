@@ -1,11 +1,15 @@
 # Camunda and automation test dojo
+## About the business process
 
+This is a sample process about Puchase Order processing that is fired as soon as it is received to process the payment and items reservation in Warehouse before the shipping.
+
+Below you will find example of the camunda process used for the study case:
 
 <p align="center">
   <img src="./docs/dojo.png" />
 </p>
 
-## How the process is configured?
+### Configuration
 
 |Task Name|Task Type|Inputs|Outputs|Topic/ Message/ Signal Name|
 |----|----|-------|-------|-------|
@@ -21,11 +25,6 @@
 |Order Refunded|Signal End Event| N/A | N/A | order_refunded |
 
 
-### Task: Restore order for processing
-
-| | |
-|-|-|
-| | |
 
 ## How to start Wiremock for local testing
 

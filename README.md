@@ -75,7 +75,7 @@ DELETE FROM products;
 
 ```
 
-Connect to Camunda BPM, on ```http://localhost:8080```, using de user and password ```demo``` and deploy the process available on ```${PROJECT_ROOT}/bpm```.
+Connect to Camunda BPM, on ```http://localhost:8080```, using de user and password ```demo``` and deploy the process available on ```${PROJECT_ROOT}/bpm```. Another possibility is to use the __Camunda Modeler__ to view and deploy the model.
 
 Once the process is successfully deployed, use the next command to create an instance to execute process and follow what is happining through ```Camunda Cockpit```.
 

@@ -26,14 +26,51 @@ In the next table you will find a simple view about de confiugration applyed to 
 |Refund Payment|External Task| N/A | N/A | order_payment_refund |
 |Order Refunded|Signal End Event| N/A | N/A | order_refunded |
 
-
+## Required system configuration
+TBD
 
 ## How to use this project
 
+Start the docker compose file in order to run the databases used by the applications in this project.
 ```
-$ cd /app/wiremock
+$ cd ${PROJECT_ROOT}
+$ docker-compose up -d
+```
+
+Start Wiremock in order to simulate a external service for submiting a payment request.
+```
+$ cd ${PROJECT_ROOT}/app/wiremock
 $ java -jar wiremock-standalone-2.27.2.jar --port 9000 --verbose
 ```
+
+Start the camunda process server
+```
+$ cd ${PROJECT_ROOT}/app/ms-process-server
+$ ./mvnw spring-boot:run
+```
+
+Start the purchase order service
+```
+$ cd ${PROJECT_ROOT}/app/ms-order
+$ ./mvnw test
+$ ./mvnw spring-boot:run
+```
+
+Connect to MySQL database used by ms-order, in order to create some test data.
+```
+-- INSERT PRODUCTS
+INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (1, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 500, 1);
+INSERT INTO products (id, sku, amount, is_dispatchable) VALUES (2, 'MICRO-XBOX-BLACK-SERIESX', 500, 1);
+
+-- INSERT AN ORDER ON THE INITIAL STATE
+INSERT INTO purchase_orders (id, status, customer_id) VALUES (1, 'ORDER_NEW', 1);
+INSERT INTO purchase_order_items (id, order_id, sku, price, quantity) VALUES (1, 1, 'APPLE-MACBOOKPRO-15-ALUMINIUM', 10.0, 1);
+INSERT INTO purchase_order_items (id, ord
+```
+
+Connect to Camunda BPM, on ```http://localhost:8080```, using de user and password ```demo``` and deploy the process available on ```${PROJECT_ROOT}/bpm```.
+
+Once the process is successfully deployed, use the next command to create an instance to execute process and follow what is happining through ```Camunda Cockpit```.
 
 ```
 curl --request POST \
@@ -48,6 +85,8 @@ curl --request POST \
   }
 }'
 ```
+
+If you what to simulate the return of a __payment confirmation__ you can use the following command to estimulate the condition.
 
 ```
 curl --request POST \

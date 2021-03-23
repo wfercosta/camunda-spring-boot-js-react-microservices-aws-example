@@ -3,13 +3,14 @@
 
 This is a sample process about Puchase Order processing that is fired as soon as it is received to process the payment and items reservation in Warehouse before the shipping.
 
-Below you will find example of the camunda process used for the study case:
+Next, you will find example of the camunda process used for the study case:
 
 <p align="center">
   <img src="./docs/dojo.png" />
 </p>
 
 ### Configuration
+In the next table you will find a simple view about de confiugration applyed to each task in the process:
 
 |Task Name|Task Type|Inputs|Outputs|Topic/ Message/ Signal Name|
 |----|----|-------|-------|-------|

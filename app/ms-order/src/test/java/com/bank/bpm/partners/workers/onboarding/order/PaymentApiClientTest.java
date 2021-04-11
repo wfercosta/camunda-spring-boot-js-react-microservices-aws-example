@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import static org.hamcrest.Matchers.notNullValue;
 		initializers = {WireMockInitializer.class},
 		classes = {TestApplication.class}
 )
+@Tag(TestType.INTEGRATION)
 public class PaymentApiClientTest {
 
 	@Autowired

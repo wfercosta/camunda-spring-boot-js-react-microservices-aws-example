@@ -6,6 +6,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -40,6 +41,7 @@ import static org.mockito.Mockito.when;
 		initializers = {WireMockInitializer.class},
 		classes = {TestApplication.class}
 )
+@Tag(TestType.COMPONENT)
 public class RequestPaymentExternalTaskComponentTest {
 
 	@Mock

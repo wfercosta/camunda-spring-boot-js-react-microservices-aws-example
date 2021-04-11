@@ -15,3 +15,7 @@ spring:
 feign:
   payment-api:
     base-url: http://localhost:9561
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace

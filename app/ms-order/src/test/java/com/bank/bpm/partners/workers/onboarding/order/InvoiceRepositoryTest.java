@@ -2,6 +2,7 @@ package com.bank.bpm.partners.workers.onboarding.order;
 
 import com.bank.bpm.partners.workers.onboarding.Application;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import static org.hamcrest.Matchers.*;
 @Sql(value = "/db/migrations/h2/data/load.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(value = "/db/migrations/h2/data/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 @ContextConfiguration(classes = Application.class)
+@Tag(TestType.INTEGRATION)
 public class InvoiceRepositoryTest {
 
 

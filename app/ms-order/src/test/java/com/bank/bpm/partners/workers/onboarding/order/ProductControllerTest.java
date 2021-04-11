@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(ProductController.class)
+@WebMvcTest(value = ProductController.class)
+@Tag(TestType.UNIT)
 public class ProductControllerTest {
 
 	public static final String EMPTY_JSON = "{}";
@@ -66,6 +68,8 @@ public class ProductControllerTest {
 	@DisplayName("Should return status bad request When the product does not have required parameters")
 	public void Should_ReturnStatusBadRequest_When_ProductDoesNotHaveRequiredParameters() throws Exception {
 
+		final int NUMBER_OF_FAILING_FIELDS = 3;
+
 		//Act | Assertions
 		mockMvc.perform(
 				post("/v1/products")
@@ -73,7 +77,7 @@ public class ProductControllerTest {
 						.content(EMPTY_JSON))
 				.andDo(print())
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.messages", hasSize(3)));
+				.andExpect(jsonPath("$.messages", hasSize(NUMBER_OF_FAILING_FIELDS)));
 
 	}
 

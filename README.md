@@ -30,8 +30,6 @@ In the next table you will find a simple view about de confiugration applyed to 
 
 ## RESTFul API
 
-<hr>
-
 ### POST /v1/products
 API resposible for creating a new product
 

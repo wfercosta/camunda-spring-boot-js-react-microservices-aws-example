@@ -26,6 +26,53 @@ In the next table you will find a simple view about de confiugration applyed to 
 |Refund Payment|External Task| N/A | N/A | order_payment_refund |
 |Order Refunded|Signal End Event| N/A | N/A | order_refunded |
 
+<br/>
+
+## RESTFul API
+
+<hr>
+
+### POST /v1/products
+API resposible for creating a new product
+
+### Request Payload
+```
+{
+  "sku": "APPLE-MACBOOKPRO-15-ALUMINIUM",
+  "amount: 500,
+  "is_dispatchable": true,
+}
+```
+
+### Response payload - Success
+```
+{
+  "data":{
+    "id": 100,
+    "sku": "APPLE-MACBOOKPRO-15-ALUMINIUM",
+    "amount: 500,
+    "is_dispatchable": true,
+    "created_at":  "2021-04-11T09:16:30+01:00",
+    "updated_at":  "2021-04-11T09:16:30+01:00",
+  }
+}
+```
+
+### Response payload - Error
+```
+{
+  "messages": [
+    "Duplicated SKU"
+  ]
+}
+```
+
+|Status code|Description|
+|---|---|
+|201|CREATED. Ther request was accpeted and the entity as processed|
+|400|INVALID_REQUEST. The request is not well formed, syntatically incorrected or violates the schema |
+|422|UNPROCESSASEBLE_ENTITY. The API cannot complete the requested action, or the request action is semantically incorrect or fails business validation.|
+|500|INTERNAL_SERVER_ERROR. An internal server error has occurred.| 
 ## Required system configuration
 TBD
 

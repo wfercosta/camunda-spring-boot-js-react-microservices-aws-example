@@ -16,7 +16,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
@@ -40,9 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ProductControllerComponentTest {
 
 	public static final String EMPTY_JSON = "{}";
-
-	@Autowired
-	private WebApplicationContext context;
 
 	@Autowired
 	private ObjectMapper objectMapper;

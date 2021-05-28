@@ -1,0 +1,346 @@
+# Criar um novo contato em um organisation existente
+
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "Contacts": [
+    {
+      "ContactId": "019d32f8-d4d1-4016-958e-cca5b1afc5d7",
+      "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+      "ContactType": "Technical",
+      "FirstName": "Wander",
+      "LastName": "Costa",
+      "Department": "Relacionamento com o cliente",
+      "EmailAddress": "wander.costa@itau-unibanco.com.br",
+      "PhoneNumber": "11983779999",
+      "AddressLine1": "Rua Hum",
+      "AddressLine2": "JD Hum",
+      "City": "São Paulo, SP",
+      "Postcode": "00000-000",
+      "Country": "BR",
+      "Revision": 3453
+    }
+  ]
+}
+
+# Alterar um contato em uma organisation existente
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "Contacts": [
+    {
+      "ContactId": "019d32f8-d4d1-4016-958e-cca5b1afc5d7",
+      "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+      "ContactType": "Technical",
+      "FirstName": "Wander",
+      "LastName": "Costa",
+      "Department": "Relacionamento com o cliente e open banking",
+      "EmailAddress": "wander.costa@itau-unibanco.com.br",
+      "PhoneNumber": "11983779999",
+      "AddressLine1": "Rua Hum",
+      "AddressLine2": "JD Hum",
+      "City": "São Paulo, SP",
+      "Postcode": "00000-000",
+      "Country": "BR",
+      "Revision": 3454
+    }
+  ]
+}
+
+#Excluir um contato em uma organisation existente
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "Contacts": [
+    {
+      "ContactId": "019d32f8-d4d1-4016-958e-cca5b1afc5d7",
+      "ContactType": "Business",
+      "Revision": 3455
+    }
+  ]
+}
+
+# Criar um software statetement
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "SoftwareStatements": {
+    "19f67d4e-838c-445d-b39d-3abb393a35d1": {
+      "SoftwareDetails": {
+        "Status": "Active",
+        "ClientId": "wDF2NLQxIuNbTuteqgYFQ",
+        "ClientName": "Software Statement Test 1",
+        "Environment": "QA",
+        "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+        "SoftwareStatementId": "19f67d4e-838c-445d-b39d-3abb393a35d1",
+        "Mode": "Test",
+        "RtsClientCreated": true,
+        "PolicyUri": "http://app.itau",
+        "ClientUri": "http://app.itau",
+        "LogoUri": "http://app.itau",
+        "RedirectUri": [
+          "http://app.itau"
+        ],
+        "TermsOfServiceUri": "http://app.itau",
+        "Version": 1,
+        "Locked": false,
+        "Revision": 3456
+      }
+    }
+  }
+}
+
+# Alterar um software statement
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "SoftwareStatements": {
+    "19f67d4e-838c-445d-b39d-3abb393a35d1": {
+      "SoftwareDetails": {
+        "Status": "Active",
+        "ClientId": "wDF2NLQxIuNbTuteqgYFQ",
+        "ClientName": "Software Statement Test 2",
+        "Environment": "QA",
+        "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+        "SoftwareStatementId": "19f67d4e-838c-445d-b39d-3abb393a35d1",
+        "Mode": "Test",
+        "RtsClientCreated": true,
+        "PolicyUri": "http://app.itau",
+        "ClientUri": "http://app.itau",
+        "LogoUri": "http://app.itau",
+        "RedirectUri": [
+          "http://app.itau"
+        ],
+        "TermsOfServiceUri": "http://app.itau",
+        "Version": 1,
+        "Locked": false,
+        "Revision": 3457
+      }
+    }
+  }
+}
+
+# Inativar um software statement
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "SoftwareStatements": {
+    "19f67d4e-838c-445d-b39d-3abb393a35d1": {
+      "SoftwareDetails": {
+        "Status": "Inactive",
+        "ClientName": "Software Statement Test 2",
+        "Environment": "QA",
+        "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+        "SoftwareStatementId": "19f67d4e-838c-445d-b39d-3abb393a35d1",
+        "Mode": "Test",
+        "RtsClientCreated": false,
+        "PolicyUri": "http://app.itau",
+        "ClientUri": "http://app.itau",
+        "LogoUri": "http://app.itau",
+        "RedirectUri": [
+          "http://app.itau"
+        ],
+        "TermsOfServiceUri": "http://app.itau",
+        "Version": 1,
+        "Locked": false,
+        "Revision": 3458
+      }
+    }
+  }
+}
+
+# Adicionar uma API resource em um Authorization Server existente
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "ApiResources": [
+        {
+          "ApiResourceId": "2526054c-06db-4639-822b-75523453dad2",
+          "ApiFamilyType": "loans",
+          "ApiVersion": 1,
+          "Revision": 3460
+        }
+      ]
+    }
+  ]
+}
+
+# Adicionar um Discovery Endpoint em um API Resource
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "ApiResources": [
+        {
+          "ApiResourceId": "2526054c-06db-4639-822b-75523453dad2",
+          "ApiDiscoveryEndpoints": [
+            {
+              "ApiDiscoveryId": "cfb72760-177b-48f6-af2f-3263cecc0b78",
+              "ApiEndpoint": "https://api.itau/open-banking/loans/v1/loans",
+              "Revision": 3462
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+# Adicionar um Discovery Endpoint em um API Resource que já possui discovery endpoint
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "ApiResources": [
+        {
+          "ApiResourceId": "2526054c-06db-4639-822b-75523453dad2",
+          "ApiDiscoveryEndpoints": [
+            {
+              "ApiDiscoveryId": "72ded92c-33a8-484a-97fc-aa330d8dadc1",
+              "ApiEndpoint": "https://api.itau/open-banking/loans/v1/loans2",
+              "Revision": 3464
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+#Remover discovery endpoint em um API resource com mais de um discovery endpoint cadastrados
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "ApiResources": [
+        {
+          "ApiResourceId": "2526054c-06db-4639-822b-75523453dad2",
+          "ApiDiscoveryEndpoints": [
+            {
+              "ApiDiscoveryId": "2526054c-06db-4639-822b-75523453dad2",
+              "Revision": 3465
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+# Remover ao mesmo tempo um API resoruce com discovery endpoint
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "ApiResources": [
+        {
+          "ApiResourceId": "2526054c-06db-4639-822b-75523453dad2",
+          "Revision": 3466
+        }
+      ]
+    }
+  ]
+}
+
+# Alterar um authorization server existente
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "79999ffd-c69f-4237-b00f-582c20d16832",
+      "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+      "AutoRegistrationSupported": true,
+      "ApiResources": [
+        {
+          "ApiResourceId": "8f036267-08bf-4945-b8f6-286ea0941f14",
+          "ApiFamilyType": "products-services",
+          "ApiVersion": 2,
+          "ApiDiscoveryEndpoints": [
+            {
+              "ApiDiscoveryId": "ebe8de47-8a91-4d2a-9c68-47337c0aad9e",
+              "ApiEndpoint": "https://api.itau/open-banking/product-services/v2/teste2"
+            }
+          ]
+        },
+        {
+          "ApiResourceId": "1a18a605-90ca-49eb-868d-b5d9ebf2e191",
+          "ApiFamilyType": "accounts",
+          "ApiVersion": 1,
+          "ApiDiscoveryEndpoints": [
+            {
+              "ApiDiscoveryId": "36c3769a-c4f4-4cb4-9ac5-b55980ae77fe",
+              "ApiEndpoint": "https://api.itau/open-banking/accounts/v1/accounts"
+            }
+          ]
+        }
+      ],
+      "CustomerFriendlyLogoUri": "http://api.itau.com.br/naoseaplica",
+      "CustomerFriendlyName": "Itaú Unibanco",
+      "DeveloperPortalUri": "http://api.itau.com.br/naoseaplica",
+      "TermsOfServiceUri": "http://api.itau.com.br/naoseaplica_2",
+      "NotificationWebhook": "https://webhook.site/50bbfc7f-251e-40e8-98a8-f6952a1cff6f",
+      "NotificationWebhookStatus": "Confirmed",
+      "OpenIDDiscoveryDocument": "http://api.itau.com.br/naoseaplica",
+      "PayloadSigningCertLocationUri": "http://api.itau.com.br/naoseaplica",
+      "Revision": 3467
+    }
+  ]
+}
+
+# Criar um novo authorization server
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "5e28b067-2a59-4f65-bfeb-c77a6d505960",
+      "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371",
+      "AutoRegistrationSupported": true,
+      "CustomerFriendlyLogoUri": "https://api.itau/itaucard",
+      "CustomerFriendlyName": "Itaucard",
+      "DeveloperPortalUri": "https://api.itau/itaucard",
+      "TermsOfServiceUri": "https://api.itau/itaucard",
+      "OpenIDDiscoveryDocument": "https://api.itau/itaucard",
+      "PayloadSigningCertLocationUri": "https://api.itau/itaucard",
+      "Revision": 3468
+    }
+  ]
+}
+
+# Remover um authorization server sem api resources
+{
+  "OrganisationDetails": {
+    "OrganisationId": "cdd674fd-b019-5110-af5d-068ed8227371"
+  },
+  "AuthorisationServers": [
+    {
+      "AuthorisationServerId": "5e28b067-2a59-4f65-bfeb-c77a6d505960",
+      "Revision": 3469
+    }
+  ]
+}
